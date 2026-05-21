@@ -3,37 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOBBEZ - Gulf & UAE Job Board</title>
+    <title>JOBBEZ - Premium Gulf & UAE Job Portal</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #1a202c; text-align: center; margin-bottom: 30px; }
-        .job-card { background: #ffffff; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #0073b1; position: relative; }
-        .job-title { color: #0073b1; margin: 0 0 10px 0; font-size: 20px; width: 70%; }
-        .job-info { margin: 5px 0; color: #4a5568; }
-        .source-tag { display: inline-block; background: #e2e8f0; color: #4a5568; padding: 3px 8px; font-size: 12px; border-radius: 4px; margin-top: 5px; }
-        .apply-btn { display: inline-block; background: #ff9900; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; position: absolute; right: 20px; top: 20px; }
-        .apply-btn:hover { background: #e68a00; }
+        /* Premium Corporate Color Palette */
+        :root {
+            --primary-blue: #0f172a;    /* Premium Deep Navy */
+            --accent-teal: #06b6d4;     /* Eye-catching Bright Teal */
+            --bg-light: #f8fafc;        /* Soft Clean White */
+            --card-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background-color: var(--bg-light); 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark);
+        }
+
+        /* Top Navigation Header Bar */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-teal);
+        }
+
+        .nav-auth-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-login {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-login:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        .btn-register {
+            background-color: var(--accent-teal);
+            color: var(--primary-blue);
+            border: 1px solid var(--accent-teal);
+        }
+
+        .btn-register:hover {
+            background-color: #22d3ee;
+            transform: translateY(-1px);
+        }
+
+        /* Modern Split Screen Layout */
+        .main-layout {
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 320px 1fr; /* 320px Left Sidebar, rest is Jobs */
+            gap: 30px;
+        }
+
+        /* Premium Left Sidebar - CV Builder Banner */
+        .sidebar-cv-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+            height: fit-content;
+            text-align: center;
+            border-top: 4px solid var(--accent-teal);
+        }
+
+        .sidebar-cv-box h3 {
+            margin: 0 0 12px 0;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .sidebar-cv-box p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .cv-btn {
+            display: block;
+            background-color: var(--accent-teal);
+            color: var(--primary-blue);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .cv-btn:hover {
+            background-color: #22d3ee;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Premium Job List Styling */
+        .feed-heading {
+            margin: 0 0 20px 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .job-card {
+            background: var(--card-white);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
+        }
+
+        .job-title {
+            color: var(--primary-blue);
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            font-weight: 700;
+            width: 75%;
+        }
+
+        .job-company {
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin: 0 0 6px 0;
+            font-size: 15px;
+        }
+
+        .job-location {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin: 0 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: var(--text-muted);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            transition: background 0.2s ease;
+        }
+
+        .apply-btn:hover {
+            background: #334155;
+        }
+
+        /* Responsive scaling for mobile screens */
+        @media (max-width: 768px) {
+            .main-layout { grid-template-columns: 1fr; margin: 20px auto; }
+            .apply-btn { position: static; display: block; text-align: center; margin-top: 15px; }
+            .job-title { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🇦🇪 JOBBEZ - Gulf & UAE Job Aggregator</h1>
-    <div id="loading-text" style="text-align:center; color:#666;">Searching for live job listings...</div>
-    <div id="job-list"></div>
+<nav class="navbar">
+    <a href="#" class="logo">JOB<span>BEZ</span></a>
+    <div class="nav-auth-btns">
+        <a class="btn btn-login" onclick="alert('Login module coming soon!')">Login</a>
+        <a class="btn btn-register" onclick="alert('Registration module coming soon!')">Register</a>
+    </div>
+</nav>
+
+<div class="main-layout">
+    
+    <aside class="sidebar-cv-box">
+        <h3>📄 Need a Professional CV?</h3>
+        <p>Build a stunning, ATS-friendly resume completely for free and download it instantly as a ready-to-submit PDF file.</p>
+        <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="cv-btn">Create Free CV Now</a>
+    </aside>
+
+    <main>
+        <h2 class="feed-heading">🔥 Active Gulf & UAE Job Openings</h2>
+        <div id="loading-text" style="text-align:center; padding: 40px; color:#64748b;">Loading verified vacancy updates...</div>
+        <div id="job-list"></div>
+    </main>
+
 </div>
 
 <script>
-    // This script automatically reads your jobs.json file
+    // System script fetching your main jobs.json pantry
     fetch('./jobs.json')
         .then(response => response.json())
         .then(jobs => {
             const container = document.getElementById('job-list');
             document.getElementById('loading-text').style.display = 'none';
             
-            if(jobs.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#666; font-size: 18px;">Welcome to JOBBEZ!<br><br>No jobs are listed in the pantry yet. Our automated delivery driver script will fill this space soon!</p>';
+            if(!jobs || jobs.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#64748b; padding: 40px;">No live postings in current rotation cycle.</p>';
                 return;
             }
 
@@ -41,17 +262,17 @@
                 const card = document.createElement('div');
                 card.className = 'job-card';
                 card.innerHTML = `
-                    <a href="${job.link}" target="_blank" class="apply-btn">Apply</a>
-                    <h2 class="job-title">${job.title}</h2>
-                    <p class="job-info"><strong>Company:</strong> ${job.company}</p>
-                    <p class="job-info"><strong>Location:</strong> ${job.location}</p>
-                    <span class="source-tag">Source: ${job.source}</span>
+                    <a href="${job.link}" target="_blank" class="apply-btn">Apply Now</a>
+                    <h3 class="job-title">${job.title}</h3>
+                    <div class="job-company">${job.company}</div>
+                    <div class="job-location">📍 ${job.location}</div>
+                    <span class="source-tag">Verified Via: ${job.source}</span>
                 `;
                 container.appendChild(card);
             });
         })
         .catch(error => {
-            document.getElementById('loading-text').innerText = 'Error loading jobs data.';
+            document.getElementById('loading-text').innerText = 'Error syncing with active data network.';
             console.error(error);
         });
 </script>
