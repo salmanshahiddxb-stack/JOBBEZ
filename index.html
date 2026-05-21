@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOBBEZ - Gulf & UAE Job Board</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #1a202c; text-align: center; margin-bottom: 30px; }
+        .job-card { background: #ffffff; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #0073b1; position: relative; }
+        .job-title { color: #0073b1; margin: 0 0 10px 0; font-size: 20px; width: 70%; }
+        .job-info { margin: 5px 0; color: #4a5568; }
+        .source-tag { display: inline-block; background: #e2e8f0; color: #4a5568; padding: 3px 8px; font-size: 12px; border-radius: 4px; margin-top: 5px; }
+        .apply-btn { display: inline-block; background: #ff9900; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; position: absolute; right: 20px; top: 20px; }
+        .apply-btn:hover { background: #e68a00; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🇦🇪 JOBBEZ - Gulf & UAE Job Aggregator</h1>
+    <div id="loading-text" style="text-align:center; color:#666;">Searching for live job listings...</div>
+    <div id="job-list"></div>
+</div>
+
+<script>
+    // This script automatically reads your jobs.json file
+    fetch('./jobs.json')
+        .then(response => response.json())
+        .then(jobs => {
+            const container = document.getElementById('job-list');
+            document.getElementById('loading-text').style.display = 'none';
+            
+            if(jobs.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#666; font-size: 18px;">Welcome to JOBBEZ!<br><br>No jobs are listed in the pantry yet. Our automated delivery driver script will fill this space soon!</p>';
+                return;
+            }
+
+            jobs.forEach(job => {
+                const card = document.createElement('div');
+                card.className = 'job-card';
+                card.innerHTML = `
+                    <a href="${job.link}" target="_blank" class="apply-btn">Apply</a>
+                    <h2 class="job-title">${job.title}</h2>
+                    <p class="job-info"><strong>Company:</strong> ${job.company}</p>
+                    <p class="job-info"><strong>Location:</strong> ${job.location}</p>
+                    <span class="source-tag">Source: ${job.source}</span>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(error => {
+            document.getElementById('loading-text').innerText = 'Error loading jobs data.';
+            console.error(error);
+        });
+</script>
+
+</body>
+</html>
