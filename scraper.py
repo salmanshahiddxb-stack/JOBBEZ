@@ -1,54 +1,46 @@
 import json
 import requests
-from bs4 import BeautifulSoup
 
 def run_scraper():
-    print("Starting JOBBEZ Delivery Driver Script...")
+    print("JOBBEZ Driver: Heading out to collect real live jobs...")
     
-    # This list will hold all the jobs we find
-    collected_jobs = []
-
-    # --- SAMPLE LIVE DATA ---
-    # We add these first so your website instantly shows active examples
-    sample_jobs = [
-        {
-            "title": "Data Analyst", 
-            "company": "Abu Dhabi National Oil Company (ADNOC)", 
-            "location": "Abu Dhabi, UAE", 
-            "source": "Bayt UAE", 
-            "link": "https://www.bayt.com"
-        },
-        {
-            "title": "HR Specialist", 
-            "company": "Al Futtaim Group", 
-            "location": "Dubai, UAE", 
-            "source": "Naukri Gulf", 
-            "link": "https://www.naukrigulf.com"
-        },
-        {
-            "title": "Software Engineer", 
-            "company": "Emirates Airline", 
-            "location": "Dubai, UAE", 
-            "source": "GulfTalent", 
-            "link": "https://www.gulftalent.com"
-        },
-        {
-            "title": "Customer Service Executive",
-            "company": "Majid Al Futtaim",
-            "location": "Sharjah, UAE",
-            "source": "Indeed UAE",
-            "link": "https://uae.indeed.com"
-        }
-    ]
+    # This is an open API that collects real jobs across the web
+    # We filter it to look for jobs in the UAE/Dubai
+    url = "https://arjunsweb.pythonanywhere.com/api/jobs?location=dubai"
     
-    # Put the sample jobs into our collector list
-    collected_jobs.extend(sample_jobs)
-
-    # Save all found jobs into our jobs.json pantry file
-    with open("jobs.json", "w") as f:
-        json.dump(collected_jobs, f, indent=4)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
+    
+    try:
+        response = requests.get(url, headers=headers, timeout=15)
         
-    print(f"Scraper finished! Successfully saved {len(collected_jobs)} jobs to jobs.json.")
+        if response.status_code == 200:
+            raw_data = response.json()
+            real_jobs = []
+            
+            # Translate the external data structure into our JOBBEZ structure
+            for item in raw_data[:20]:  # Let's grab the top 20 freshest jobs
+                job_card = {
+                    "title": item.get("title", "Job Opening"),
+                    "company": item.get("company", "Confidential Company"),
+                    "location": item.get("location", "Dubai, UAE"),
+                    "source": item.get("source", "Web Aggregator"),
+                    "link": item.get("url", "https://www.google.com")
+                }
+                real_jobs.append(job_card)
+                
+            # Save the real live jobs to our pantry!
+            with open("jobs.json", "w") as f:
+                json.dump(real_jobs, f, indent=4)
+                
+            print(f"Success! Found and saved {len(real_jobs)} live jobs to jobs.json.")
+            
+        else:
+            print(f"Server responded with error code: {response.status_code}")
+            
+    except Exception as e:
+        print(f"Could not connect to live servers right now: {e}")
 
 if __name__ == "__main__":
     run_scraper()
