@@ -1,0 +1,33 @@
+name: JOBBEZ Auto-Updater
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Tells GitHub to run this automatically every single day at midnight
+  workflow_dispatch: # This adds a magic button so we can test-run it manually right now!
+
+jobs:
+  build-and-scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Copy project files
+      uses: actions/checkout@v4
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install required scraping modules
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Execute Scraper Script
+      run: python scraper.py
+
+    - name: Save new jobs to GitHub repository
+      run: |
+        git config --global user.name "Automation Bot"
+        git config --global user.email "bot@github.com"
+        git add jobs.json
+        git commit -m "System Sync: Fresh Gulf jobs updated" || exit 0
+        git push
