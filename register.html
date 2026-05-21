@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - JOBBEZ Premium</title>
+    <style>
+        :root {
+            --primary-blue: #0f172a;
+            --accent-teal: #06b6d4;
+            --bg-light: #f8fafc;
+            --card-white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-card {
+            background: var(--card-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+            width: 100%;
+            max-width: 450px;
+            border-top: 5px solid var(--accent-teal);
+            box-sizing: border-box;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 25px;
+            text-decoration: none;
+            display: block;
+        }
+        .logo span { color: var(--accent-teal); }
+        h2 { margin: 0 0 20px 0; color: var(--primary-blue); font-size: 22px; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #475569; }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        input:focus, select:focus { border-color: var(--accent-teal); outline: none; }
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent-teal);
+            color: var(--primary-blue);
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { background: #22d3ee; }
+        .footer-text { text-align: center; margin-top: 20px; font-size: 14px; color: #64748b; }
+        .footer-text a { color: var(--accent-teal); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="register-card">
+    <a href="index.html" class="logo">JOB<span>BEZ</span></a>
+    <h2>Create Premium Account</h2>
+    
+    <form onsubmit="alert('Registration success simulation! To save user accounts securely, a live data server integration is required.'); return false;">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label>I am a...</label>
+            <select required>
+                <option value="seeker">Job Seeker (Looking for jobs)</option>
+                <option value="employer">Employer (Posting jobs)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Create a password" required>
+        </div>
+        <button type="submit" class="btn-submit">Register Now</button>
+    </form>
+
+    <div class="footer-text">
+        Already have an account? <a href="login.html">Login here</a>
+    </div>
+</div>
+
+</body>
+</html>
