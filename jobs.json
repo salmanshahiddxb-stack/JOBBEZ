@@ -7,24 +7,136 @@
         "link": "https://www.naukrigulf.com"
     },
     {
-        "title": "HR Assistant",
+        "title": "HR Coordinator",
         "company": "Emirates Group",
         "location": "Dubai, UAE",
-        "source": "Indeed UAE Network",
-        "link": "https://ae.indeed.com"
+        "source": "NaukriGulf Network",
+        "link": "https://www.naukrigulf.com"
     },
     {
         "title": "Data Entry Operator",
         "company": "Al Habtoor Contracting",
         "location": "Abu Dhabi, UAE",
+        "source": "NaukriGulf Network",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Customer Service Executive",
+        "company": "Majid Al Futtaim",
+        "location": "Dubai Mall",
+        "source": "NaukriGulf Network",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Warehouse Assistant",
+        "company": "Amazon UAE",
+        "location": "Jebel Ali, Dubai",
+        "source": "Indeed UAE Network",
+        "link": "https://ae.indeed.com"
+    },
+    {
+        "title": "Airport Operations Agent",
+        "company": "Transguard Group",
+        "location": "Dubai Airport (DXB)",
+        "source": "Indeed UAE Network",
+        "link": "https://ae.indeed.com"
+    },
+    {
+        "title": "Front Desk Receptionist",
+        "company": "Aster DM Healthcare",
+        "location": "Sharjah, UAE",
+        "source": "Indeed UAE Network",
+        "link": "https://ae.indeed.com"
+    },
+    {
+        "title": "Office Administrator",
+        "company": "Damac Properties",
+        "location": "Dubai, UAE",
+        "source": "Indeed UAE Network",
+        "link": "https://ae.indeed.com"
+    },
+    {
+        "title": "Logistics Coordinator",
+        "company": "DP World",
+        "location": "Jebel Ali, Dubai",
         "source": "GulfTalent Network",
         "link": "https://www.gulftalent.com"
     },
     {
-        "title": "Customer Service Agent",
-        "company": "Majid Al Futtaim",
+        "title": "Inventory Controller",
+        "company": "Al Tayer Group",
+        "location": "Dubai, UAE",
+        "source": "GulfTalent Network",
+        "link": "https://www.gulftalent.com"
+    },
+    {
+        "title": "Executive Secretary",
+        "company": "Sobha Realty",
+        "location": "Dubai Marina",
+        "source": "GulfTalent Network",
+        "link": "https://www.gulftalent.com"
+    },
+    {
+        "title": "Accounts Assistant",
+        "company": "Damas Jewellery",
+        "location": "Dubai, UAE",
+        "source": "GulfTalent Network",
+        "link": "https://www.gulftalent.com"
+    },
+    {
+        "title": "Digital Marketing Assistant",
+        "company": "Property Finder",
+        "location": "Dubai Media City",
+        "source": "LinkedIn Network",
+        "link": "https://www.linkedin.com"
+    },
+    {
+        "title": "Procurement Officer",
+        "company": "Emaar Properties",
+        "location": "Downtown Dubai",
+        "source": "LinkedIn Network",
+        "link": "https://www.linkedin.com"
+    },
+    {
+        "title": "HR Recruiter",
+        "company": "Azadea Group",
         "location": "Dubai, UAE",
         "source": "LinkedIn Network",
         "link": "https://www.linkedin.com"
+    },
+    {
+        "title": "IT Helpdesk Technician",
+        "company": "Etisalat UAE",
+        "location": "Abu Dhabi, UAE",
+        "source": "LinkedIn Network",
+        "link": "https://www.linkedin.com"
+    },
+    {
+        "title": "Safety Inspector",
+        "company": "Al Naboodah Construction",
+        "location": "Dubai, UAE",
+        "source": "Laimoon Network",
+        "link": "https://ae.laimoon.com"
+    },
+    {
+        "title": "Guest Services Associate",
+        "company": "Hilton Hotels",
+        "location": "Abu Dhabi, UAE",
+        "source": "Laimoon Network",
+        "link": "https://ae.laimoon.com"
+    },
+    {
+        "title": "Sales Consultant",
+        "company": "Sharaf DG",
+        "location": "Dubai Mall, UAE",
+        "source": "Laimoon Network",
+        "link": "https://ae.laimoon.com"
+    },
+    {
+        "title": "Call Center Agent",
+        "company": "Du Telecom",
+        "location": "Dubai, UAE",
+        "source": "Laimoon Network",
+        "link": "https://ae.laimoon.com"
     }
 ]
