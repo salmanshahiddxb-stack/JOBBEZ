@@ -1,30 +1,72 @@
 [
     {
-        "title": "Airport Operations Assistant",
+        "title": "Document Controller",
+        "company": "Al Futtaim Group",
+        "location": "Dubai, UAE",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "HR Coordinator",
         "company": "Emirates Group",
         "location": "Dubai, UAE",
-        "source": "Jooble Gulf Network",
-        "link": "https://www.emiratesgroupcareers.com"
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
     },
     {
-        "title": "Guest Services Associate",
-        "company": "Hilton Hotels",
-        "location": "Dubai Marina, UAE",
-        "source": "Jooble Gulf Network",
-        "link": "https://careers.hilton.com"
+        "title": "Data Entry Operator",
+        "company": "Al Habtoor Contracting",
+        "location": "Abu Dhabi, UAE",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
     },
     {
-        "title": "Document Controller",
-        "company": "AL HABTOOR Group",
-        "location": "Dubai, UAE",
-        "source": "Jooble Gulf Network",
+        "title": "Customer Service Executive",
+        "company": "Majid Al Futtaim",
+        "location": "Dubai Mall, UAE",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Logistics Assistant",
+        "company": "DP World",
+        "location": "Jebel Ali, Dubai",
+        "source": "GulfTalent Feed",
         "link": "https://www.gulftalent.com"
     },
     {
-        "title": "Site Safety Officer",
-        "company": "AL TARIQ Contractors",
-        "location": "Abu Dhabi, UAE",
-        "source": "Jooble Gulf Network",
+        "title": "Store Supervisor",
+        "company": "Azadea Group",
+        "location": "Mirdif City Centre, Dubai",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Administrative Officer",
+        "company": "Sobha Realty",
+        "location": "Dubai, UAE",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Airport Security Agent",
+        "company": "Transguard Group",
+        "location": "Dubai Airport (DXB)",
+        "source": "GulfTalent Feed",
+        "link": "https://www.gulftalent.com"
+    },
+    {
+        "title": "Accountant Assistant",
+        "company": "Damas Jewellery",
+        "location": "Sharjah, UAE",
+        "source": "NaukriGulf Verified",
+        "link": "https://www.naukrigulf.com"
+    },
+    {
+        "title": "Front Desk Receptionist",
+        "company": "Aster DM Healthcare",
+        "location": "Dubai, UAE",
+        "source": "NaukriGulf Verified",
         "link": "https://www.naukrigulf.com"
     }
 ]
