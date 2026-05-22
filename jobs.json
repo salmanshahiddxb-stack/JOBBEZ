@@ -3,70 +3,28 @@
         "title": "Document Controller",
         "company": "Al Futtaim Group",
         "location": "Dubai, UAE",
-        "source": "NaukriGulf Verified",
+        "source": "NaukriGulf Network",
         "link": "https://www.naukrigulf.com"
     },
     {
-        "title": "HR Coordinator",
+        "title": "HR Assistant",
         "company": "Emirates Group",
         "location": "Dubai, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
+        "source": "Indeed UAE Network",
+        "link": "https://ae.indeed.com"
     },
     {
         "title": "Data Entry Operator",
         "company": "Al Habtoor Contracting",
         "location": "Abu Dhabi, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
+        "source": "GulfTalent Network",
+        "link": "https://www.gulftalent.com"
     },
     {
-        "title": "Customer Service Executive",
+        "title": "Customer Service Agent",
         "company": "Majid Al Futtaim",
-        "location": "Dubai Mall, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
-    },
-    {
-        "title": "Logistics Assistant",
-        "company": "DP World",
-        "location": "Jebel Ali, Dubai",
-        "source": "GulfTalent Feed",
-        "link": "https://www.gulftalent.com"
-    },
-    {
-        "title": "Store Supervisor",
-        "company": "Azadea Group",
-        "location": "Mirdif City Centre, Dubai",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
-    },
-    {
-        "title": "Administrative Officer",
-        "company": "Sobha Realty",
         "location": "Dubai, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
-    },
-    {
-        "title": "Airport Security Agent",
-        "company": "Transguard Group",
-        "location": "Dubai Airport (DXB)",
-        "source": "GulfTalent Feed",
-        "link": "https://www.gulftalent.com"
-    },
-    {
-        "title": "Accountant Assistant",
-        "company": "Damas Jewellery",
-        "location": "Sharjah, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
-    },
-    {
-        "title": "Front Desk Receptionist",
-        "company": "Aster DM Healthcare",
-        "location": "Dubai, UAE",
-        "source": "NaukriGulf Verified",
-        "link": "https://www.naukrigulf.com"
+        "source": "LinkedIn Network",
+        "link": "https://www.linkedin.com"
     }
 ]
