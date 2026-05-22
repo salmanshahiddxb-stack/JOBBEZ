@@ -3,279 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOBBEZ - Premium Gulf & UAE Job Portal</title>
+    <title>JOBBEZ - Premium Gulf Job Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* Premium Corporate Color Palette */
-        :root {
-            --primary-blue: #0f172a;    /* Premium Deep Navy */
-            --accent-teal: #06b6d4;     /* Eye-catching Bright Teal */
-            --bg-light: #f8fafc;        /* Soft Clean White */
-            --card-white: #ffffff;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-        }
-
-        body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            background-color: var(--bg-light); 
-            margin: 0; 
-            padding: 0; 
-            color: var(--text-dark);
-        }
-
-        /* Top Navigation Header Bar */
-        .navbar {
-            background-color: var(--primary-blue);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--accent-teal);
-        }
-
-        .nav-auth-btns {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-login {
-            color: white;
-            border: 1px solid rgba(255,255,255,0.4);
-        }
-
-        .btn-login:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        .btn-register {
-            background-color: var(--accent-teal);
-            color: var(--primary-blue);
-            border: 1px solid var(--accent-teal);
-        }
-
-        .btn-register:hover {
-            background-color: #22d3ee;
-            transform: translateY(-1px);
-        }
-
-        /* Modern Split Screen Layout */
-        .main-layout {
-            max-width: 1250px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 320px 1fr; /* 320px Left Sidebar, rest is Jobs */
-            gap: 30px;
-        }
-
-        /* Premium Left Sidebar - CV Builder Banner */
-        .sidebar-cv-box {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
-            height: fit-content;
-            text-align: center;
-            border-top: 4px solid var(--accent-teal);
-        }
-
-        .sidebar-cv-box h3 {
-            margin: 0 0 12px 0;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .sidebar-cv-box p {
-            font-size: 14px;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .cv-btn {
-            display: block;
-            background-color: var(--accent-teal);
-            color: var(--primary-blue);
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 15px;
-            transition: background 0.3s ease;
-        }
-
-        .cv-btn:hover {
-            background-color: #22d3ee;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
-        }
-
-        /* Premium Job List Styling */
-        .feed-heading {
-            margin: 0 0 20px 0;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .job-card {
-            background: var(--card-white);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
-            border: 1px solid #e2e8f0;
-            position: relative;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .job-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
-            border-color: #cbd5e1;
-        }
-
-        .job-title {
-            color: var(--primary-blue);
-            margin: 0 0 8px 0;
-            font-size: 20px;
-            font-weight: 700;
-            width: 75%;
-        }
-
-        .job-company {
-            color: var(--accent-teal);
-            font-weight: 600;
-            margin: 0 0 6px 0;
-            font-size: 15px;
-        }
-
-        .job-location {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin: 0 0 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .source-tag {
-            display: inline-block;
-            background: #f1f5f9;
-            color: var(--text-muted);
-            padding: 4px 10px;
-            font-size: 12px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .apply-btn {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 10px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-            position: absolute;
-            right: 25px;
-            top: 25px;
-            transition: background 0.2s ease;
-        }
-
-        .apply-btn:hover {
-            background: #334155;
-        }
-
-        /* Responsive scaling for mobile screens */
-        @media (max-width: 768px) {
-            .main-layout { grid-template-columns: 1fr; margin: 20px auto; }
-            .apply-btn { position: static; display: block; text-align: center; margin-top: 15px; }
-            .job-title { width: 100%; }
-        }
+        body { background-color: #0B132B; color: #FFFFFF; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .premium-card { background-color: #1C2541; border: 1px solid #3A506B; transition: all 0.3s ease; }
+        .premium-card:hover { border-color: #48CAE4; transform: translateY(-3px); }
+        .text-teal { color: #48CAE4; }
+        .bg-teal { background-color: #48CAE4; }
+        .border-teal { border-color: #48CAE4; }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-<nav class="navbar">
-    <a href="#" class="logo">JOB<span>BEZ</span></a>
-    <div class="nav-auth-btns">
-    <a href="login.html" class="btn btn-login">Login</a>
-    <a href="register.html" class="btn btn-register">Register</a>
-</div>
-</nav>
+    <header class="border-b border-gray-700 bg-[#0B132B] sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl font-black tracking-wider text-white">JOB<span class="text-teal">BEZ</span></span>
+        </div>
+        <div class="flex gap-4">
+            <button class="text-sm font-semibold hover:text-teal cursor-pointer">Login</button>
+            <button class="text-sm font-semibold bg-teal text-[#0B132B] px-4 py-2 rounded-lg font-bold hover:bg-[#38b2ac] transition cursor-pointer">Register</button>
+        </div>
+    </header>
 
-<div class="main-layout">
-    
-    <aside class="sidebar-cv-box">
-        <h3>📄 Need a Professional CV?</h3>
-        <p>Build a stunning, ATS-friendly resume completely for free and download it instantly as a ready-to-submit PDF file.</p>
-        <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="cv-btn">Create Free CV Now</a>
-    </aside>
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="lg:col-span-2 bg-[#1C2541] border border-gray-700 p-8 rounded-2xl flex flex-col justify-center">
+                <h1 class="text-2xl font-bold mb-4 text-white">Search through live dynamic Gulf listings</h1>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="jobSearch" onkeyup="filterJobs()" placeholder="Search by keywords, designations, company..." class="w-full bg-[#0B132B] border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-teal text-sm">
+                    <button onclick="filterJobs()" class="bg-teal text-[#0B132B] font-bold px-6 py-3 rounded-xl hover:opacity-90 transition cursor-pointer text-sm whitespace-nowrap">Search Jobs</button>
+                </div>
+            </div>
 
-    <main>
-        <h2 class="feed-heading">🔥 Active Gulf & UAE Job Openings</h2>
-        <div id="loading-text" style="text-align:center; padding: 40px; color:#64748b;">Loading verified vacancy updates...</div>
-        <div id="job-list"></div>
+            <div class="bg-white text-[#0B132B] p-6 rounded-2xl flex flex-col justify-between shadow-xl">
+                <div>
+                    <h3 class="text-xl font-bold mb-1 text-[#0B132B]">Let Employers Find You!</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">Get discovered by 10,000+ Employers & apply to jobs in a single click instantly.</p>
+                </div>
+                <div class="mt-4">
+                    <button class="w-full text-center text-sm font-bold bg-[#E63946] text-white py-2.5 rounded-xl hover:opacity-90 transition shadow cursor-pointer">Register For Free</button>
+                    <p class="text-[11px] text-gray-500 text-center mt-2">Get notified about jobs matching your criteria. <span class="text-blue-600 cursor-pointer font-semibold underline">Create Job Alert</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="premium-card p-6 rounded-2xl">
+                <h3 class="font-bold text-base mb-3 text-white border-b border-gray-700 pb-2">📍 Jobs By Location</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button onclick="filterCity('all')" class="city-btn bg-teal text-[#0B132B] font-bold px-3 py-1.5 rounded-lg transition cursor-pointer">All UAE</button>
+                    <button onclick="filterCity('dubai')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Dubai</button>
+                    <button onclick="filterCity('abu dhabi')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Abu Dhabi</button>
+                    <button onclick="filterCity('sharjah')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Sharjah</button>
+                    <button onclick="filterCity('saudi')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Saudi Arabia</button>
+                    <button class="bg-[#0B132B] border border-gray-700 text-gray-400 px-3 py-1.5 rounded-lg text-[11px] font-medium">+39 More</button>
+                </div>
+            </div>
+
+            <div class="premium-card p-6 rounded-2xl">
+                <h3 class="font-bold text-base mb-3 text-white border-b border-gray-700 pb-2">🗂️ Jobs By Category</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button onclick="filterCategoryKeyword('management')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Top Management</button>
+                    <button onclick="filterCategoryKeyword('account')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Accounts / Tax</button>
+                    <button onclick="filterCategoryKeyword('operator')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Data Entry / Civil Engg</button>
+                    <button onclick="filterCategoryKeyword('hr')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">HR / Industrial Relations</button>
+                    <button class="bg-[#0B132B] border border-gray-700 text-gray-400 px-3 py-1.5 rounded-lg text-[11px] font-medium">+97 More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full bg-[#1C2541] border border-dashed border-gray-600 p-3 rounded-xl text-center text-[11px] text-gray-500 tracking-wider mb-8">
+            ✨ SPONSORED BANNER POSITION (MONETAG / ADSTERRA CODES READY) ✨
+        </div>
+
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold tracking-wide">🔥 Live Premium Job Openings</h2>
+                <span class="text-xs text-gray-400" id="jobCount">Loading portal lists...</span>
+            </div>
+            <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>
+        </div>
+
+        <div class="bg-[#1C2541] border border-gray-700 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 mb-8">
+            <div class="text-center md:text-left md:w-1/3">
+                <div class="text-4xl mb-2 flex justify-center md:justify-start">🚀</div>
+                <h3 class="text-xl font-bold mb-1 text-white">Boost Your Job Hunt</h3>
+                <p class="text-gray-400 text-xs">Get a CV that highlights your profile and increase structural web profile views by upto 50%.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-2/3">
+                <div class="bg-[#0B132B] border border-gray-700 p-5 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-teal font-bold mb-1 text-lg">📄</div>
+                        <h4 class="font-bold text-sm text-white mb-1">Free CV Writing Application</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Create professional, ATS-friendly documents for free inside our custom builder utility.</p>
+                    </div>
+                    <a href="https://salmanshahiddxb-stack.github.io/free-cv-builder/" target="_blank" class="text-xs text-teal font-bold mt-4 inline-flex items-center gap-1 hover:underline cursor-pointer">Build CV Now &rarr;</a>
+                </div>
+                <div class="bg-[#0B132B] border border-gray-700 p-5 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-teal font-bold mb-1 text-lg">💡</div>
+                        <h4 class="font-bold text-sm text-white mb-1">Resume Spotlight Tool</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Stand out from the crowd! Highlight your professional layout profile to get noticed easily.</p>
+                    </div>
+                    <span class="text-xs text-teal font-bold mt-4 inline-flex items-center gap-1 hover:underline cursor-pointer">Know More &rarr;</span>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-</div>
+    <footer class="bg-[#0B132B] border-t border-gray-800 py-10 px-6 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-xs text-gray-400">
+            <div class="flex flex-col gap-2.5">
+                <span class="hover:text-teal cursor-pointer">Home</span>
+                <span class="hover:text-teal cursor-pointer">Terms & Conditions</span>
+                <span class="hover:text-teal cursor-pointer">Privacy Policy</span>
+                <span class="hover:text-teal cursor-pointer">Security Advice</span>
+            </div>
+            <div class="flex flex-col gap-2.5">
+                <span class="hover:text-teal cursor-pointer">Fraud Protection</span>
+                <span class="hover:text-teal cursor-pointer">Report Bug</span>
+                <span class="hover:text-teal cursor-pointer">Summons/Notices</span>
+                <span class="hover:text-teal cursor-pointer">Grievances</span>
+            </div>
+            <div class="flex flex-col gap-2.5">
+                <span class="hover:text-teal cursor-pointer">About Us</span>
+                <span class="hover:text-teal cursor-pointer">Contact Us</span>
+                <span class="hover:text-teal cursor-pointer">Feedback Forum</span>
+                <span class="hover:text-teal cursor-pointer">FAQs Support</span>
+            </div>
+            <div class="flex flex-col justify-between items-start">
+                <span class="text-lg font-black tracking-wider text-white">JOB<span class="text-teal">BEZ</span></span>
+                <span class="text-[10px] text-gray-600 mt-2">&copy; 2026 JOBBEZ Network.<br>All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
 
-<script>
-    // System script fetching your main jobs.json pantry
-    fetch('./jobs.json')
-        .then(response => response.json())
-        .then(jobs => {
-            const container = document.getElementById('job-list');
-            document.getElementById('loading-text').style.display = 'none';
-            
-            if(!jobs || jobs.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#64748b; padding: 40px;">No live postings in current rotation cycle.</p>';
+    <script>
+        let allJobs = [];
+        let currentCityFilter = 'all';
+
+        // Automatically fetch data from your daily updated pantry file
+        async function fetchLiveNetworkData() {
+            try {
+                const response = await fetch('jobs.json');
+                allJobs = await response.json();
+                displayJobs(allJobs);
+            } catch (error) {
+                document.getElementById('jobsGrid').innerHTML = `
+                    <div class="col-span-full text-center py-8 text-red-400 font-semibold">
+                        ⚠️ Temporary connection delay. Refreshing network stream...
+                    </div>`;
+            }
+        }
+
+        // Render job listing rows dynamically into your custom layout
+        function displayJobs(jobsArray) {
+            const grid = document.getElementById('jobsGrid');
+            const countText = document.getElementById('jobCount');
+            grid.innerHTML = "";
+
+            if(jobsArray.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-8 text-gray-500">No active job matches found. Try resetting the filters.</div>`;
+                countText.innerText = "Showing 0 available vacancies";
                 return;
             }
 
-            jobs.forEach(job => {
-                const card = document.createElement('div');
-                card.className = 'job-card';
-                card.innerHTML = `
-                    <a href="${job.link}" target="_blank" class="apply-btn">Apply Now</a>
-                    <h3 class="job-title">${job.title}</h3>
-                    <div class="job-company">${job.company}</div>
-                    <div class="job-location">📍 ${job.location}</div>
-                    <span class="source-tag">Verified Via: ${job.source}</span>
-                `;
-                container.appendChild(card);
-            });
-        })
-        .catch(error => {
-            document.getElementById('loading-text').innerText = 'Error syncing with active data network.';
-            console.error(error);
-        });
-</script>
+            countText.innerText = `Showing ${jobsArray.length} active vacancies available today`;
 
+            jobsArray.forEach(job => {
+                const card = document.createElement('div');
+                card.className = "premium-card p-5 rounded-xl flex flex-col justify-between";
+
+                card.innerHTML = `
+                    <div>
+                        <h2 class="font-bold text-base text-white tracking-wide mb-1.5 leading-snug truncate">${job.title}</h2>
+                        <p class="text-gray-300 text-xs mb-1">🏢 ${job.company}</p>
+                        <p class="text-gray-400 text-[11px] mb-4">📍 ${job.location}</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-700/50">
+                        <span class="text-[9px] bg-gray-800 text-teal px-2 py-0.5 rounded font-bold uppercase tracking-wider">${job.source || 'Premium'}</span>
+                        <a href="${job.link}" target="_blank" class="bg-teal text-[#0B132B] text-xs font-bold px-3 py-1.5 rounded-lg hover:opacity-90 transition">Apply Now</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Live text keywords search filtering execution
+        function filterJobs() {
+            const searchVal = document.getElementById('jobSearch').value.toLowerCase();
+            executeCombinedFilter(searchVal, currentCityFilter);
+        }
+
+        // Handle city tab clicks 
+        function filterCity(city) {
+            currentCityFilter = city;
+            
+            // Highlight layout buttons cleanly
+            const buttons = document.querySelectorAll('.city-btn');
+            buttons.forEach(btn => {
+                btn.className = "city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer";
+            });
+            
+            if(event && event.target && event.target.tagName === 'BUTTON') {
+                event.target.className = "city-btn bg-teal text-[#0B132B] font-bold px-3 py-1.5 rounded-lg transition cursor-pointer";
+            }
+
+            const searchVal = document.getElementById('jobSearch').value.toLowerCase();
+            executeCombinedFilter(searchVal, city);
+        }
+
+        // Category direct click engine filtering helper
+        function filterCategoryKeyword(keyword) {
+            document.getElementById('jobSearch').value = keyword;
+            executeCombinedFilter(keyword, currentCityFilter);
+        }
+
+        // Central multi-level processing operations control filter block
+        function executeCombinedFilter(keyword, city) {
+            let filtered = allJobs;
+
+            if (city !== 'all') {
+                filtered = filtered.filter(j => j.location.toLowerCase().includes(city.toLowerCase()));
+            }
+            if (keyword.trim() !== '') {
+                filtered = filtered.filter(j => j.title.toLowerCase().includes(keyword.toLowerCase()) || j.company.toLowerCase().includes(keyword.toLowerCase()));
+            }
+
+            displayJobs(filtered);
+        }
+
+        // Auto trigger setup operation arrays on launch
+        window.onload = fetchLiveNetworkData;
+    </script>
 </body>
 </html>
