@@ -3,150 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOBBEZ - Premium Gulf Job Portal</title>
+    <title>JOBBEZ - Premium Gulf Job Portal & Career Hub</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        body { background-color: #0B132B; color: #FFFFFF; font-family: 'Segoe UI', Roboto, sans-serif; }
-        .premium-card { background-color: #1C2541; border: 1px solid #3A506B; transition: all 0.3s ease; }
-        .premium-card:hover { border-color: #48CAE4; transform: translateY(-3px); }
-        .text-teal { color: #48CAE4; }
-        .bg-teal { background-color: #48CAE4; }
-        .border-teal { border-color: #48CAE4; }
+        body { background-color: #0F172A; color: #F8FAFC; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        .premium-card { background-color: #1E293B; border: 1px solid #334155; transition: all 0.25s ease-in-out; }
+        .premium-card:hover { border-color: #38BDF8; transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(56, 189, 248, 0.2); }
+        .text-sky { color: #38BDF8; }
+        .bg-sky { background-color: #38BDF8; }
+        .border-sky { border-color: #38BDF8; }
+        /* Smooth custom scrollbars */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-slate-900">
 
-    <header class="border-b border-gray-700 bg-[#0B132B] sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <span class="text-2xl font-black tracking-wider text-white">JOB<span class="text-teal">BEZ</span></span>
+    <header class="border-b border-slate-800 bg-[#0F172A]/90 backdrop-blur sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <span class="text-2xl font-black tracking-wider text-white">JOB<span class="text-sky">BEZ</span></span>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300 tracking-wide uppercase">
+                <span onclick="filterCity('all')" class="hover:text-sky cursor-pointer transition">Find Jobs</span>
+                <span onclick="openModal('registerModal')" class="hover:text-sky cursor-pointer transition">Upload CV</span>
+                <span onclick="document.getElementById('stats-bar').scrollIntoView({behavior: 'smooth'})" class="hover:text-sky cursor-pointer transition">Market Trends</span>
+            </nav>
         </div>
         <div class="flex gap-4">
-            <button class="text-sm font-semibold hover:text-teal cursor-pointer">Login</button>
-            <button class="text-sm font-semibold bg-teal text-[#0B132B] px-4 py-2 rounded-lg font-bold hover:bg-[#38b2ac] transition cursor-pointer">Register</button>
+            <button onclick="openModal('loginModal')" class="text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-sky cursor-pointer">Login</button>
+            <button onclick="openModal('registerModal')" class="text-xs font-bold uppercase tracking-wider bg-sky text-slate-900 px-5 py-2.5 rounded-xl hover:opacity-90 transition font-black cursor-pointer shadow-lg shadow-sky-500/10">Register</button>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <div class="lg:col-span-2 bg-[#1C2541] border border-gray-700 p-8 rounded-2xl flex flex-col justify-center">
-                <h1 class="text-2xl font-bold mb-4 text-white">Search through live dynamic Gulf listings</h1>
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="jobSearch" onkeyup="filterJobs()" placeholder="Search by keywords, designations, company..." class="w-full bg-[#0B132B] border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-teal text-sm">
-                    <button onclick="filterJobs()" class="bg-teal text-[#0B132B] font-bold px-6 py-3 rounded-xl hover:opacity-90 transition cursor-pointer text-sm whitespace-nowrap">Search Jobs</button>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-800 p-8 rounded-2xl flex flex-col justify-center relative overflow-hidden shadow-xl">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-sky-500/5 rounded-full blur-2xl"></div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white">Search Through <span class="text-sky">66,454</span> Live Gulf Jobs</h1>
+                <p class="text-slate-400 text-xs sm:text-sm mb-6">Find verified executive, administrative, technical, and remote employment opportunities matching your exact background profiles.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-2.5">
+                    <input type="text" id="jobSearch" onkeyup="filterJobs()" placeholder="Search by job titles, designations, companies, keywords..." class="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sky text-sm transition">
+                    <button onclick="filterJobs()" class="bg-sky text-slate-900 font-extrabold px-8 py-3.5 rounded-xl hover:opacity-95 transition cursor-pointer text-sm tracking-wide uppercase shadow-md whitespace-nowrap">Search Jobs</button>
                 </div>
             </div>
 
-            <div class="bg-white text-[#0B132B] p-6 rounded-2xl flex flex-col justify-between shadow-xl">
+            <div class="bg-gradient-to-b from-white to-slate-100 text-slate-900 p-6 rounded-2xl flex flex-col justify-between shadow-2xl relative border border-white">
                 <div>
-                    <h3 class="text-xl font-bold mb-1 text-[#0B132B]">Let Employers Find You!</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">Get discovered by 10,000+ Employers & apply to jobs in a single click instantly.</p>
+                    <span class="bg-rose-100 text-rose-600 font-bold text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full mb-2 inline-block">Direct Access</span>
+                    <h3 class="text-xl font-black tracking-tight text-slate-900 leading-tight">Let Employers Find Your CV!</h3>
+                    <p class="text-slate-600 text-xs mt-1.5 leading-relaxed">Get instantly matched with 10,000+ top structural hiring managers and corporate recruiters inside the UAE.</p>
                 </div>
-                <div class="mt-4">
-                    <button class="w-full text-center text-sm font-bold bg-[#E63946] text-white py-2.5 rounded-xl hover:opacity-90 transition shadow cursor-pointer">Register For Free</button>
-                    <p class="text-[11px] text-gray-500 text-center mt-2">Get notified about jobs matching your criteria. <span class="text-blue-600 cursor-pointer font-semibold underline">Create Job Alert</span></p>
+                <div class="mt-6">
+                    <button onclick="openModal('registerModal')" class="w-full text-center text-xs font-black uppercase tracking-wider bg-[#E63946] text-white py-3.5 rounded-xl hover:bg-[#d62839] transition shadow-lg shadow-rose-600/20 cursor-pointer">Register For Free</button>
+                    <p class="text-[10px] text-slate-500 text-center mt-3">Get real-time job matches sent to your email daily. <span onclick="openModal('registerModal')" class="text-blue-600 cursor-pointer font-bold underline hover:text-blue-800">Create Job Alert</span></p>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div id="stats-bar" class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#1E293B]/40 border border-slate-800 p-6 rounded-2xl text-center">
+            <div>
+                <p class="text-2xl font-black text-white">24,500+</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Dubai Vacancies</p>
+            </div>
+            <div class="border-l border-slate-800">
+                <p class="text-2xl font-black text-sky">12,180+</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Abu Dhabi Vacancies</p>
+            </div>
+            <div class="border-l border-slate-800">
+                <p class="text-2xl font-black text-white">8,400+</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Top Corporate Brands</p>
+            </div>
+            <div class="border-l border-slate-800">
+                <p class="text-2xl font-black text-emerald-400">100%</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Daily Verified Feeds</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="premium-card p-6 rounded-2xl">
-                <h3 class="font-bold text-base mb-3 text-white border-b border-gray-700 pb-2">📍 Jobs By Location</h3>
+                <h3 class="font-bold text-sm tracking-wide uppercase mb-4 text-slate-200 border-b border-slate-700/60 pb-2.5 flex items-center gap-1.5"><span>📍</span> Explore Jobs By Location</h3>
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="filterCity('all')" class="city-btn bg-teal text-[#0B132B] font-bold px-3 py-1.5 rounded-lg transition cursor-pointer">All UAE</button>
-                    <button onclick="filterCity('dubai')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Dubai</button>
-                    <button onclick="filterCity('abu dhabi')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Abu Dhabi</button>
-                    <button onclick="filterCity('sharjah')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Sharjah</button>
-                    <button onclick="filterCity('saudi')" class="city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Saudi Arabia</button>
-                    <button class="bg-[#0B132B] border border-gray-700 text-gray-400 px-3 py-1.5 rounded-lg text-[11px] font-medium">+39 More</button>
+                    <button onclick="filterCity('all')" class="city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md">All UAE</button>
+                    <button onclick="filterCity('dubai')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Dubai</button>
+                    <button onclick="filterCity('abu dhabi')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Abu Dhabi</button>
+                    <button onclick="filterCity('sharjah')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Sharjah</button>
+                    <button onclick="filterCity('saudi')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Saudi Arabia</button>
+                    <button class="bg-[#0F172A] border border-slate-800 text-slate-500 px-3.5 py-2 rounded-lg text-[10px] tracking-wider font-bold">+39 More</button>
                 </div>
             </div>
 
             <div class="premium-card p-6 rounded-2xl">
-                <h3 class="font-bold text-base mb-3 text-white border-b border-gray-700 pb-2">🗂️ Jobs By Category</h3>
+                <h3 class="font-bold text-sm tracking-wide uppercase mb-4 text-slate-200 border-b border-slate-700/60 pb-2.5 flex items-center gap-1.5"><span>🗂️</span> Explore Jobs By Industry</h3>
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="filterCategoryKeyword('management')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Top Management</button>
-                    <button onclick="filterCategoryKeyword('account')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Accounts / Tax</button>
-                    <button onclick="filterCategoryKeyword('operator')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">Data Entry / Civil Engg</button>
-                    <button onclick="filterCategoryKeyword('hr')" class="bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer">HR / Industrial Relations</button>
-                    <button class="bg-[#0B132B] border border-gray-700 text-gray-400 px-3 py-1.5 rounded-lg text-[11px] font-medium">+97 More</button>
+                    <button onclick="filterCategoryKeyword('management')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Top Management</button>
+                    <button onclick="filterCategoryKeyword('account')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Accounts / Financial Services</button>
+                    <button onclick="filterCategoryKeyword('operator')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Data Entry / Civil Engg</button>
+                    <button onclick="filterCategoryKeyword('hr')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">HR / Industrial Relations</button>
+                    <button class="bg-[#0F172A] border border-slate-800 text-slate-500 px-3.5 py-2 rounded-lg text-[10px] tracking-wider font-bold">+97 More</button>
                 </div>
             </div>
         </div>
 
-        <div class="w-full bg-[#1C2541] border border-dashed border-gray-600 p-3 rounded-xl text-center text-[11px] text-gray-500 tracking-wider mb-8">
-            ✨ SPONSORED BANNER POSITION (MONETAG / ADSTERRA CODES READY) ✨
+        <div class="w-full bg-[#1E293B] border border-dashed border-slate-700 p-4 rounded-xl text-center text-[10px] font-bold text-slate-500 tracking-widest uppercase">
+            🔥 SPONSORED BANNER GRID ADVERTISEMENT (MONETAG / ADSTERRA CODES PLUG-IN) 🔥
         </div>
 
-        <div class="mb-12">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold tracking-wide">🔥 Live Premium Job Openings</h2>
-                <span class="text-xs text-gray-400" id="jobCount">Loading portal lists...</span>
+        <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-800 pb-3">
+                <h2 class="text-xl font-black tracking-tight text-white flex items-center gap-2"><span>🔥</span> Daily Auto-Updated Job Streams</h2>
+                <span class="text-xs font-semibold text-slate-400 bg-[#1E293B] px-3 py-1 rounded-full border border-slate-700" id="jobCount">Fetching live databanks...</span>
             </div>
             <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 </div>
         </div>
 
-        <div class="bg-[#1C2541] border border-gray-700 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 mb-8">
-            <div class="text-center md:text-left md:w-1/3">
-                <div class="text-4xl mb-2 flex justify-center md:justify-start">🚀</div>
-                <h3 class="text-xl font-bold mb-1 text-white">Boost Your Job Hunt</h3>
-                <p class="text-gray-400 text-xs">Get a CV that highlights your profile and increase structural web profile views by upto 50%.</p>
+        <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-800 rounded-2xl p-8 flex flex-col lg:flex-row items-center gap-8 shadow-xl">
+            <div class="text-center lg:text-left lg:w-1/3">
+                <div class="text-4xl mb-3 animate-bounce">🚀</div>
+                <h3 class="text-xl font-black tracking-tight text-white">Boost Your Job Hunt Search By 50%</h3>
+                <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Ensure structural talent filters flag your background profile files first when elite multi-national Gulf enterprises select applications.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-2/3">
-                <div class="bg-[#0B132B] border border-gray-700 p-5 rounded-xl flex flex-col justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-2/3">
+                <div class="bg-[#0F172A] border border-slate-700 p-6 rounded-xl flex flex-col justify-between hover:border-sky transition">
                     <div>
-                        <div class="text-teal font-bold mb-1 text-lg">📄</div>
-                        <h4 class="font-bold text-sm text-white mb-1">Free CV Writing Application</h4>
-                        <p class="text-gray-400 text-xs leading-relaxed">Create professional, ATS-friendly documents for free inside our custom builder utility.</p>
+                        <div class="text-sky text-2xl font-bold mb-2">📄</div>
+                        <h4 class="font-bold text-sm text-white mb-1.5">Free Premium CV Builder Tool</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Instantly design an industry-approved, professional ATS-friendly resume completely free using our external creation app.</p>
                     </div>
-                    <a href="https://salmanshahiddxb-stack.github.io/free-cv-builder/" target="_blank" class="text-xs text-teal font-bold mt-4 inline-flex items-center gap-1 hover:underline cursor-pointer">Build CV Now &rarr;</a>
+                    <a href="https://salmanshahiddxb-stack.github.io/free-cv-builder/" target="_blank" class="text-xs text-sky font-bold mt-4 inline-flex items-center gap-1 hover:underline">Build Free CV Now &rarr;</a>
                 </div>
-                <div class="bg-[#0B132B] border border-gray-700 p-5 rounded-xl flex flex-col justify-between">
+                <div class="bg-[#0F172A] border border-slate-700 p-6 rounded-xl flex flex-col justify-between hover:border-sky transition">
                     <div>
-                        <div class="text-teal font-bold mb-1 text-lg">💡</div>
-                        <h4 class="font-bold text-sm text-white mb-1">Resume Spotlight Tool</h4>
-                        <p class="text-gray-400 text-xs leading-relaxed">Stand out from the crowd! Highlight your professional layout profile to get noticed easily.</p>
+                        <div class="text-sky text-2xl font-bold mb-2">💡</div>
+                        <h4 class="font-bold text-sm text-white mb-1.5">Resume Spotlight Optimization</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Stand out dramatically from large applicant pools. Feature your profile tags natively inside executive search boards.</p>
                     </div>
-                    <span class="text-xs text-teal font-bold mt-4 inline-flex items-center gap-1 hover:underline cursor-pointer">Know More &rarr;</span>
+                    <span onclick="openModal('registerModal')" class="text-xs text-sky font-bold mt-4 inline-flex items-center gap-1 hover:underline cursor-pointer">Know More Details &rarr;</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-sky-950/40 to-slate-900 border border-slate-800 p-8 rounded-2xl text-center max-w-3xl mx-auto space-y-4">
+            <h3 class="text-lg font-bold text-white">Receive Fresh Openings directly inside your Inbox</h3>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">Join thousands of verified Gulf job seekers. Subscribe to our daily verified multi-platform newsletter update loop.</p>
+            <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
+                <input type="email" placeholder="Enter your email address..." class="bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky w-full">
+                <button onclick="alert('Thank you for subscribing to JOBBEZ real-time vacancy logs!')" class="bg-sky text-slate-900 font-bold text-xs px-6 py-2.5 rounded-xl hover:opacity-90 transition whitespace-nowrap cursor-pointer">Subscribe</button>
             </div>
         </div>
 
     </main>
 
-    <footer class="bg-[#0B132B] border-t border-gray-800 py-10 px-6 mt-auto">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-xs text-gray-400">
-            <div class="flex flex-col gap-2.5">
-                <span class="hover:text-teal cursor-pointer">Home</span>
-                <span class="hover:text-teal cursor-pointer">Terms & Conditions</span>
-                <span class="hover:text-teal cursor-pointer">Privacy Policy</span>
-                <span class="hover:text-teal cursor-pointer">Security Advice</span>
+    <footer class="bg-[#0F172A] border-t border-slate-800 py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-xs text-slate-400">
+            <div class="flex flex-col gap-3">
+                <span onclick="filterCity('all')" class="hover:text-sky cursor-pointer transition">Home Directory</span>
+                <span onclick="alert('Terms and Conditions Agreement Document')" class="hover:text-sky cursor-pointer transition">Terms & Conditions</span>
+                <span onclick="alert('Privacy Protection Policy Document')" class="hover:text-sky cursor-pointer transition">Privacy Policy</span>
+                <span onclick="alert('Security Advice & Anti-Fraud Advisory')" class="hover:text-sky cursor-pointer transition">Security Advice</span>
             </div>
-            <div class="flex flex-col gap-2.5">
-                <span class="hover:text-teal cursor-pointer">Fraud Protection</span>
-                <span class="hover:text-teal cursor-pointer">Report Bug</span>
-                <span class="hover:text-teal cursor-pointer">Summons/Notices</span>
-                <span class="hover:text-teal cursor-pointer">Grievances</span>
+            <div class="flex flex-col gap-3">
+                <span onclick="alert('Fraud Prevention System Information')" class="hover:text-sky cursor-pointer transition">Fraud Protection Advisory</span>
+                <span onclick="alert('Report Bug/System Error Form Connection')" class="hover:text-sky cursor-pointer transition">Report System Bug</span>
+                <span onclick="alert('Official Legal Notices/Summons Logs')" class="hover:text-sky cursor-pointer transition">Summons / Notices</span>
+                <span onclick="alert('Corporate Redress Grievances Interface')" class="hover:text-sky cursor-pointer transition">Grievances Board</span>
             </div>
-            <div class="flex flex-col gap-2.5">
-                <span class="hover:text-teal cursor-pointer">About Us</span>
-                <span class="hover:text-teal cursor-pointer">Contact Us</span>
-                <span class="hover:text-teal cursor-pointer">Feedback Forum</span>
-                <span class="hover:text-teal cursor-pointer">FAQs Support</span>
+            <div class="flex flex-col gap-3">
+                <span onclick="alert('About Our Enterprise Platform Story')" class="hover:text-sky cursor-pointer transition">About Our Platform</span>
+                <span onclick="alert('Corporate Support Contact Form')" class="hover:text-sky cursor-pointer transition">Contact Support Team</span>
+                <span onclick="alert('User Feedback Forum Link')" class="hover:text-sky cursor-pointer transition">User Feedback Forum</span>
+                <span onclick="alert('Frequently Asked Questions Reference Base')" class="hover:text-sky cursor-pointer transition">FAQs Knowledge Center</span>
             </div>
             <div class="flex flex-col justify-between items-start">
-                <span class="text-lg font-black tracking-wider text-white">JOB<span class="text-teal">BEZ</span></span>
-                <span class="text-[10px] text-gray-600 mt-2">&copy; 2026 JOBBEZ Network.<br>All rights reserved.</span>
+                <span class="text-xl font-black tracking-wider text-white">JOB<span class="text-sky">BEZ</span></span>
+                <p class="text-[10px] text-slate-600 leading-relaxed mt-2">&copy; 2026 JOBBEZ Global Media Group.<br>Powered by Adzuna Partner Core.<br>All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
+        <div class="bg-[#1E293B] border border-slate-700 w-full max-w-sm rounded-2xl p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                <h3 class="font-bold text-white text-base">Log In To JOBBEZ</h3>
+                <button onclick="closeModal('loginModal')" class="text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-slate-400 mb-1">Email Address</label>
+                    <input type="email" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Password Code</label>
+                    <input type="password" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
+                </div>
+                <button onclick="alert('System Notice: Demo Authentication Sequence Success!'); closeModal('loginModal')" class="w-full bg-sky text-slate-900 font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-[#1E293B] border border-slate-700 w-full max-w-sm rounded-2xl p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                <h3 class="font-bold text-white text-base">Create Free Candidate Profile</h3>
+                <button onclick="closeModal('registerModal')" class="text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-slate-400 mb-1">Full Professional Name</label>
+                    <input type="text" placeholder="John Doe" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Email Connection</label>
+                    <input type="email" placeholder="example@mail.com" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Upload CV / Resume Document (PDF/DOCX)</label>
+                    <input type="file" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2 text-slate-400 file:mr-4 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-bold file:bg-sky file:text-slate-900 cursor-pointer">
+                </div>
+                <button onclick="alert('Account setup sequence registered successfully!'); closeModal('registerModal')" class="w-full bg-[#E63946] text-white font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Register Portfolio</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let allJobs = [];
         let currentCityFilter = 'all';
 
-        // Automatically fetch data from your daily updated pantry file
+        // Direct async fetch operation connecting to your automated data pool file
         async function fetchLiveNetworkData() {
             try {
                 const response = await fetch('jobs.json');
@@ -154,76 +240,78 @@
                 displayJobs(allJobs);
             } catch (error) {
                 document.getElementById('jobsGrid').innerHTML = `
-                    <div class="col-span-full text-center py-8 text-red-400 font-semibold">
-                        ⚠️ Temporary connection delay. Refreshing network stream...
+                    <div class="col-span-full text-center py-12 bg-[#1E293B] border border-slate-800 rounded-xl text-slate-400 font-medium">
+                        <p class="text-sm">🔄 Syncing live multi-platform data loops...</p>
+                        <p class="text-[11px] text-slate-500 mt-1">Please wait 10 seconds or refresh the browser interface window.</p>
                     </div>`;
             }
         }
 
-        // Render job listing rows dynamically into your custom layout
+        // Structural UI rendering element loop injection mapping engine
         function displayJobs(jobsArray) {
             const grid = document.getElementById('jobsGrid');
             const countText = document.getElementById('jobCount');
             grid.innerHTML = "";
 
             if(jobsArray.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-8 text-gray-500">No active job matches found. Try resetting the filters.</div>`;
-                countText.innerText = "Showing 0 available vacancies";
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-xs">No matching live vacancies discovered. Try expanding search parameters.</div>`;
+                countText.innerText = "Showing 0 live opportunities";
                 return;
             }
 
-            countText.innerText = `Showing ${jobsArray.length} active vacancies available today`;
+            countText.innerText = `Showing ${jobsArray.length} live opportunities verified today`;
 
             jobsArray.forEach(job => {
                 const card = document.createElement('div');
                 card.className = "premium-card p-5 rounded-xl flex flex-col justify-between";
 
                 card.innerHTML = `
-                    <div>
-                        <h2 class="font-bold text-base text-white tracking-wide mb-1.5 leading-snug truncate">${job.title}</h2>
-                        <p class="text-gray-300 text-xs mb-1">🏢 ${job.company}</p>
-                        <p class="text-gray-400 text-[11px] mb-4">📍 ${job.location}</p>
+                    <div class="space-y-1">
+                        <h2 class="font-bold text-sm text-white tracking-wide leading-snug truncate hover:text-sky transition cursor-pointer" title="${job.title}">${job.title}</h2>
+                        <p class="text-slate-300 text-xs font-medium truncate">🏢 ${job.company}</p>
+                        <p class="text-slate-400 text-[11px] flex items-center gap-1"><span>📍</span> ${job.location}</p>
                     </div>
-                    <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-700/50">
-                        <span class="text-[9px] bg-gray-800 text-teal px-2 py-0.5 rounded font-bold uppercase tracking-wider">${job.source || 'Premium'}</span>
-                        <a href="${job.link}" target="_blank" class="bg-teal text-[#0B132B] text-xs font-bold px-3 py-1.5 rounded-lg hover:opacity-90 transition">Apply Now</a>
+                    <div class="flex justify-between items-center mt-5 pt-3.5 border-t border-slate-800">
+                        <span class="text-[9px] bg-slate-900 text-sky px-2 py-0.5 rounded font-black uppercase tracking-wider border border-slate-800">${job.source || 'NaukriGULF Core'}</span>
+                        <a href="${job.link}" target="_blank" class="bg-sky text-slate-900 text-[11px] font-black uppercase tracking-wider px-3.5 py-2 rounded-lg hover:opacity-90 transition shadow shadow-sky-500/5">Apply Now</a>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Live text keywords search filtering execution
+        // Live text entry keyboard filtration search script hook
         function filterJobs() {
             const searchVal = document.getElementById('jobSearch').value.toLowerCase();
             executeCombinedFilter(searchVal, currentCityFilter);
         }
 
-        // Handle city tab clicks 
+        // Location selection array link shifter filters 
         function filterCity(city) {
             currentCityFilter = city;
             
-            // Highlight layout buttons cleanly
             const buttons = document.querySelectorAll('.city-btn');
             buttons.forEach(btn => {
-                btn.className = "city-btn bg-[#0B132B] border border-gray-600 text-gray-300 px-3 py-1.5 rounded-lg hover:border-teal transition cursor-pointer";
+                btn.className = "city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer";
             });
             
             if(event && event.target && event.target.tagName === 'BUTTON') {
-                event.target.className = "city-btn bg-teal text-[#0B132B] font-bold px-3 py-1.5 rounded-lg transition cursor-pointer";
+                event.target.className = "city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md";
+            } else {
+                buttons[0].className = "city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md";
             }
 
             const searchVal = document.getElementById('jobSearch').value.toLowerCase();
             executeCombinedFilter(searchVal, city);
         }
 
-        // Category direct click engine filtering helper
+        // Industry direct link quick category shifter click connector helper
         function filterCategoryKeyword(keyword) {
             document.getElementById('jobSearch').value = keyword;
             executeCombinedFilter(keyword, currentCityFilter);
         }
 
-        // Central multi-level processing operations control filter block
+        // Master combined structural array filtration control processing core block
         function executeCombinedFilter(keyword, city) {
             let filtered = allJobs;
 
@@ -237,7 +325,11 @@
             displayJobs(filtered);
         }
 
-        // Auto trigger setup operation arrays on launch
+        // Visual layout helper modal status controllers
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        // Trigger loading processes instantly on initial startup rendering routine
         window.onload = fetchLiveNetworkData;
     </script>
 </body>
