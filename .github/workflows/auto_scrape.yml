@@ -72,7 +72,7 @@ jobs:
                         seen_links.add(job['link'])
                         unique_jobs.append(job)
 
-                # 5. Keep a maximum limit (e.g., last 200 jobs) so your website doesn't load too slowly
+                # 5. Keep a maximum limit of 200 jobs so your website stays super fast
                 unique_jobs = unique_jobs[:200]
                 
                 # 6. Save everything back to the file
@@ -91,5 +91,5 @@ jobs:
         git config --global user.name "JOBBEZ Automation Bot"
         git config --global user.email "bot@github.com"
         git add jobs.json
-        git commit -m "Daily Sync: Added fresh jobs to existing list" || exit 0
+        git commit -m "Daily Sync: Added fresh jobs to existing list without overwriting" || exit 0
         git push
