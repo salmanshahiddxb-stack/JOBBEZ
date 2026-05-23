@@ -353,17 +353,26 @@
 
                 card.innerHTML = `
                     <div class="space-y-1">
-                        <h2 class="font-bold text-sm text-white tracking-wide leading-snug truncate hover:text-sky transition cursor-pointer" title="${job.title}">${job.title}</h2>
+                        <h2 class="font-bold text-sm text-white tracking-wide leading-snug truncate hover:text-sky transition cursor-pointer" title="${job.title}" onclick="handleJobClick('${job.link}')">${job.title}</h2>
                         <p class="text-slate-300 text-xs font-medium truncate">🏢 ${job.company}</p>
                         <p class="text-slate-400 text-[11px] flex items-center gap-1"><span>📍</span> ${job.location}</p>
                     </div>
                     <div class="flex justify-between items-center mt-5 pt-3.5 border-t border-slate-800">
                         <span class="text-[9px] bg-slate-900 text-sky px-2 py-0.5 rounded font-black uppercase tracking-wider border border-slate-800">${job.source || 'NaukriGULF Core'}</span>
-                        <a href="${job.link}" target="_blank" class="bg-sky text-slate-900 text-[11px] font-black uppercase tracking-wider px-3.5 py-2 rounded-lg hover:opacity-90 transition shadow shadow-sky-500/5">Apply Now</a>
+                        <button onclick="handleJobClick('${job.link}')" class="bg-sky text-slate-900 text-[11px] font-black uppercase tracking-wider px-3.5 py-2 rounded-lg hover:opacity-90 transition shadow shadow-sky-500/5 cursor-pointer">Apply Now</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        // Master function to handle the double tab opening strategy
+        function handleJobClick(jobUrl) {
+            // 1. Open the Monetag Ad link first
+            window.open('https://omg10.com/4/11046899', '_blank');
+            
+            // 2. Open the actual job destination right after
+            window.open(jobUrl, '_blank');
         }
 
         // Live text entry keyboard filtration search script hook
@@ -397,26 +406,28 @@
             executeCombinedFilter(keyword, currentCityFilter);
         }
 
-        // Master combined structural array filtration control processing core block
-        function executeCombinedFilter(keyword, city) {
-            let filtered = allJobs;
-
-            if (city !== 'all') {
-                filtered = filtered.filter(j => j.location.toLowerCase().includes(city.toLowerCase()));
-            }
-            if (keyword.trim() !== '') {
-                filtered = filtered.filter(j => j.title.toLowerCase().includes(keyword.toLowerCase()) || j.company.toLowerCase().includes(keyword.toLowerCase()));
-            }
-
+        // Combined filtration core logic mapping engine
+        function executeCombinedFilter(searchVal, city) {
+            const filtered = allJobs.filter(job => {
+                const matchesSearch = job.title.toLowerCase().includes(searchVal) || 
+                                      job.company.toLowerCase().includes(searchVal) || 
+                                      job.location.toLowerCase().includes(searchVal);
+                const matchesCity = city === 'all' || job.location.toLowerCase().includes(city.toLowerCase());
+                return matchesSearch && matchesCity;
+            });
             displayJobs(filtered);
         }
 
-        // Visual layout helper modal status controllers
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+        // Modal visibility toggle utils
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
 
-        // Trigger loading processes instantly on initial startup rendering routine
-        window.onload = fetchLiveNetworkData;
+        // Initial launch core run sequences
+        fetchLiveNetworkData();
     </script>
 </body>
 </html>
