@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOBBEZ - Nanny, Babysitter & Cleaning Vacancies UAE</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { background-color: #0F172A; color: #F8FAFC; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .premium-card { background-color: #1E293B; border: 1px solid #334155; transition: all 0.25s ease-in-out; }
+        .premium-card:hover { border-color: #F43F5E; transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(244, 63, 94, 0.2); }
+        .text-rose { color: #F43F5E; }
+        .bg-rose { background-color: #F43F5E; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- NAVBAR SECTION -->
+    <header class="border-b border-slate-800 bg-[#0F172A]/90 backdrop-blur sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <a href="index.html" class="text-2xl font-black tracking-wider text-white no-underline">JOB<span class="text-rose">BEZ</span></a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300 tracking-wide uppercase">
+                <a href="index.html" class="hover:text-rose transition no-underline text-slate-300">Main Job Board</a>
+                <span class="text-rose font-bold">🏠 Domestic Hub</span>
+                <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="hover:text-rose transition no-underline text-slate-300">Build Free CV</a>
+            </nav>
+        </div>
+        <button onclick="window.location.href='index.html'" class="text-xs font-bold uppercase tracking-wider bg-slate-800 text-white px-5 py-2.5 rounded-xl hover:bg-slate-700 transition">Back Home</button>
+    </header>
+
+    <!-- MAIN BODY CORE -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+        
+        <!-- HERO SEGMENT -->
+        <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-800 p-8 rounded-2xl relative overflow-hidden shadow-xl text-center max-w-4xl mx-auto">
+            <span class="bg-rose-500/10 text-rose px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">Specialized Domestic Portal</span>
+            <h1 class="text-3xl font-extrabold mt-3 mb-2 text-white">Nanny, Babysitter & Housekeeping Jobs</h1>
+            <p class="text-slate-400 text-sm max-w-xl mx-auto">Verified domestic service vacancies across Dubai, Abu Dhabi, and Sharjah markets updated live.</p>
+        </div>
+
+        <!-- REVENUE AD SLOT SPLIT BANNER -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+            <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="block bg-gradient-to-r from-rose-600 to-amber-600 border border-rose-400 p-4 rounded-xl shadow-lg hover:scale-[1.01] transition">
+                <div class="flex justify-between items-center h-full">
+                    <div>
+                        <span class="bg-white text-rose-700 font-black text-[9px] uppercase px-2 py-0.5 rounded mb-1 inline-block">Free Benefit</span>
+                        <h4 class="text-sm font-black text-white">NEED A PROFESSIONAL CV?</h4>
+                        <p class="text-rose-100 text-[11px] mt-0.5">Click here to build and download a template PDF instantly.</p>
+                    </div>
+                    <span class="bg-white/10 text-white text-xs font-bold px-3 py-2 rounded-lg border border-white/20 whitespace-nowrap ml-2">Create CV 📄</span>
+                </div>
+            </a>
+            <div class="w-full bg-[#1E293B] border border-dashed border-slate-700 p-4 rounded-xl flex items-center justify-center text-center">
+                <span class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">✨ MONETAG LIVE ON CLICK ACTIVATED ✨</span>
+            </div>
+        </div>
+
+        <!-- DYNAMIC CARDS CONTAINER -->
+        <div class="space-y-4 max-w-6xl mx-auto">
+            <h2 class="text-xl font-black tracking-tight text-white flex items-center gap-2"><span>✨</span> Verified Live Domestic Stream</h2>
+            <div id="domesticGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Javascript fills filtered cards directly inside here -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER MATRIX -->
+    <footer class="bg-[#0F172A] border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 JOBBEZ Domestic Services Division. Powered by Adzuna Core Systems.</p>
+    </footer>
+
+    <!-- INTERACTIVE FILTER LOGIC WITH MONETAG DUAL OPENER -->
+    <script>
+        // 🌟 THE AD REVENUE ENGINE FUNCTION
+        function handleJobClick(event, jobUrl) {
+            event.preventDefault(); // Prevents normal single link jump
+
+            // 1. Instantly launches your Monetag link in a brand new background tab
+            window.open("https://omg10.com/4/11046899", "_blank");
+
+            // 2. Changes their current screen instantly to show the raw cleaning/nanny job application data
+            window.location.href = jobUrl;
+        }
+
+        async function loadDomesticJobs() {
+            const grid = document.getElementById('domesticGrid');
+            try {
+                const response = await fetch('jobs.json');
+                const allJobs = await response.json();
+                
+                // Filter specifically for cleaning, maid, nanny, and babysitter titles
+                const domesticKeywords = ['nanny', 'babysitter', 'clean', 'maid', 'housekeeper', 'domestic', 'caregiver'];
+                const filtered = allJobs.filter(job => 
+                    domesticKeywords.some(keyword => job.title.toLowerCase().includes(keyword))
+                );
+
+                if(filtered.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-xs">Syncing fresh domestic postings... Please refresh in a moment.</div>`;
+                    return;
+                }
+
+                filtered.forEach(job => {
+                    const card = document.createElement('div');
+                    card.className = "premium-card p-5 rounded-xl flex flex-col justify-between";
+                    card.innerHTML = `
+                        <div class="space-y-1">
+                            <h2 class="font-bold text-sm text-white tracking-wide truncate hover:text-rose transition" title="${job.title}">${job.title}</h2>
+                            <p class="text-slate-300 text-xs">🏢 ${job.company}</p>
+                            <p class="text-slate-400 text-[11px]">📍 ${job.location}</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-3 border-t border-slate-800">
+                            <span class="text-[9px] bg-slate-900 text-rose px-2 py-0.5 rounded font-black uppercase border border-slate-800">Verified</span>
+                            <!-- 🌟 Clicking Apply Now triggers the Dual-Open functionality seamlessly -->
+                            <a href="${job.link}" onclick="handleJobClick(event, '${job.link}')" class="bg-rose text-white text-[11px] font-black uppercase tracking-wider px-3.5 py-2 rounded-lg hover:opacity-90 transition no-underline">Apply Now</a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (error) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs">Error streaming dynamic domestic files.</div>`;
+            }
+        }
+        window.onload = loadDomesticJobs;
+    </script>
+</body>
+</html>
