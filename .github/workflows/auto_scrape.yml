@@ -21,13 +21,75 @@ jobs:
       run: |
         pip install requests
 
-    - name: Execute Scraper Script
-      run: python scraper.py
+    - name: Execute Scraper Script Natively
+      run: |
+        python -c "
+        import requests
+        import json
+        import os
+
+        url = 'https://api.adzuna.com/v1/api/jobs/ae/search/1?app_id=ca9407a5&app_key=8c31aaaaeb44da53f662693c05465f11&results_per_page=30&sort_by=date'
+        
+        # 1. Load existing jobs so we don't delete them
+        existing_jobs = []
+        if os.path.exists('jobs.json'):
+            try:
+                with open('jobs.json', 'r', encoding='utf-8') as f:
+                    existing_jobs = json.load(f)
+                    if not isinstance(existing_jobs, list):
+                        existing_jobs = []
+            except Exception as e:
+                print(f'Could not read old jobs, starting fresh: {e}')
+
+        try:
+            # 2. Fetch the newest jobs from Adzuna
+            response = requests.get(url, timeout=15)
+            data = response.json()
+            
+            new_jobs = []
+            for result in data.get('results', []):
+                title_clean = result.get('title', 'Premium Vacancy').replace('<strong>', '').replace('</strong>', '').replace('<b>', '').replace('</b>', '')
+                company_clean = result.get('company', {}).get('display_name', 'Verified Top Employer').replace('<strong>', '').replace('</strong>', '')
+                
+                clean_job = {
+                    'title': title_clean,
+                    'company': company_clean,
+                    'location': result.get('location', {}).get('display_name', 'UAE Region'),
+                    'link': result.get('redirect_url', '#'),
+                    'source': 'NaukriGULF Core'
+                }
+                new_jobs.append(clean_job)
+            
+            if new_jobs:
+                # 3. Combine old jobs and new jobs together
+                combined_jobs = new_jobs + existing_jobs
+                
+                # 4. Remove exact duplicates (by job link) so the file doesn't get messy
+                seen_links = set()
+                unique_jobs = []
+                for job in combined_jobs:
+                    if job['link'] not in seen_links:
+                        seen_links.add(job['link'])
+                        unique_jobs.append(job)
+
+                # 5. Keep a maximum limit (e.g., last 200 jobs) so your website doesn't load too slowly
+                unique_jobs = unique_jobs[:200]
+                
+                # 6. Save everything back to the file
+                with open('jobs.json', 'w', encoding='utf-8') as f:
+                    json.dump(unique_jobs, f, ensure_ascii=False, indent=4)
+                print(f'Successfully added new jobs! Total jobs now stored: {len(unique_jobs)}')
+            else:
+                raise Exception('No new jobs returned from API.')
+                
+        except Exception as e:
+            print(f'Error gathering new jobs: {e}')
+        "
 
     - name: Save new jobs to GitHub repository
       run: |
         git config --global user.name "JOBBEZ Automation Bot"
         git config --global user.email "bot@github.com"
         git add jobs.json
-        git commit -m "Daily Sync: Fresh Top 5 Platform Jobs Updated" || exit 0
+        git commit -m "Daily Sync: Added fresh jobs to existing list" || exit 0
         git push
