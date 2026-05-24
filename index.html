@@ -12,11 +12,13 @@
         .text-sky { color: #38BDF8; }
         .bg-sky { background-color: #38BDF8; }
         .border-sky { border-color: #38BDF8; }
-        /* Smooth custom scrollbars */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0F172A; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
+        
+        /* Smooth white look for inside the Careerjet widget iframe container */
+        .cj-job-box iframe { border-radius: 12px !important; border: 1px solid #334155 !important; min-height: 450px; background: #ffffff; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-slate-900">
@@ -25,7 +27,7 @@
         <div class="flex items-center gap-8">
             <span class="text-2xl font-black tracking-wider text-white">JOB<span class="text-sky">BEZ</span></span>
             <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300 tracking-wide uppercase">
-                <span onclick="filterCity('all')" class="hover:text-sky cursor-pointer transition">Find Jobs</span>
+                <span onclick="filterCity('')" class="hover:text-sky cursor-pointer transition">Find Jobs</span>
                 <span onclick="openModal('registerModal')" class="hover:text-sky cursor-pointer transition">Upload CV</span>
                 <span onclick="document.getElementById('stats-bar').scrollIntoView({behavior: 'smooth'})" class="hover:text-sky cursor-pointer transition">Market Trends</span>
             </nav>
@@ -37,7 +39,8 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
-<!-- ==================== HIGH-CONVERTING AD STACK SECTION ==================== -->
+        
+        <!-- ==================== HIGH-CONVERTING AD STACK SECTION ==================== -->
         <div class="w-full space-y-4">
             
             <!-- Ad 1: CV Builder / Career Utility -->
@@ -45,9 +48,7 @@
                 <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-500/5 blur-2xl transition-all duration-500 group-hover:bg-sky-500/15 group-hover:scale-150"></div>
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky text-lg">
-                            📄
-                        </div>
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky text-lg">📄</div>
                         <div>
                             <span class="inline-block text-[9px] font-extrabold tracking-widest text-sky uppercase bg-sky-500/10 px-2.5 py-0.5 rounded-full mb-1">Free Career Utility</span>
                             <h3 class="text-base font-black text-white tracking-wide uppercase m-0">Need a Professional CV for Gulf Jobs?</h3>
@@ -60,14 +61,12 @@
                 </div>
             </a>
 
-            <!-- Ad 2: Domestic Staff Recruitment (Cleaners / Nannies / Babysitters) -->
+            <!-- Ad 2: Domestic Staff Recruitment -->
             <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="block group relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-sky-950/40 border border-slate-700/60 p-5 shadow-xl transition-all duration-300 hover:border-sky/50 hover:shadow-sky-500/5 hover:-translate-y-0.5 no-underline">
                 <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-500/5 blur-2xl transition-all duration-500 group-hover:bg-sky-500/15 group-hover:scale-150"></div>
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky text-lg">
-                            🧹
-                        </div>
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky text-lg">🧹</div>
                         <div>
                             <span class="inline-block text-[9px] font-extrabold tracking-widest text-sky uppercase bg-sky-500/10 px-2.5 py-0.5 rounded-full mb-1">Urgent Live Openings</span>
                             <h3 class="text-base font-black text-white tracking-wide uppercase m-0">Hiring Cleaners, Nannies & Babysitters</h3>
@@ -86,7 +85,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2 bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-800 p-8 rounded-2xl flex flex-col justify-center relative overflow-hidden shadow-xl">
                 <div class="absolute -right-10 -top-10 w-40 h-40 bg-sky-500/5 rounded-full blur-2xl"></div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white">Search Through <span class="text-sky">66,454</span> Live Gulf Jobs</h1>
+                <h1 class="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white">Search Through Live Gulf Jobs</h1>
                 <p class="text-slate-400 text-xs sm:text-sm mb-6">Find verified executive, administrative, technical, and remote employment opportunities matching your exact background profiles.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-2.5">
@@ -113,15 +112,15 @@
                 <p class="text-2xl font-black text-white">24,500+</p>
                 <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Dubai Vacancies</p>
             </div>
-            <div class="border-l border-slate-800">
+            <div>
                 <p class="text-2xl font-black text-sky">12,180+</p>
                 <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Abu Dhabi Vacancies</p>
             </div>
-            <div class="border-l border-slate-800">
+            <div>
                 <p class="text-2xl font-black text-white">8,400+</p>
                 <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Top Corporate Brands</p>
             </div>
-            <div class="border-l border-slate-800">
+            <div>
                 <p class="text-2xl font-black text-emerald-400">100%</p>
                 <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Daily Verified Feeds</p>
             </div>
@@ -131,12 +130,11 @@
             <div class="premium-card p-6 rounded-2xl">
                 <h3 class="font-bold text-sm tracking-wide uppercase mb-4 text-slate-200 border-b border-slate-700/60 pb-2.5 flex items-center gap-1.5"><span>📍</span> Explore Jobs By Location</h3>
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="filterCity('all')" class="city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md">All UAE</button>
-                    <button onclick="filterCity('dubai')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Dubai</button>
-                    <button onclick="filterCity('abu dhabi')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Abu Dhabi</button>
-                    <button onclick="filterCity('sharjah')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Sharjah</button>
-                    <button onclick="filterCity('saudi')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Saudi Arabia</button>
-                    <button class="bg-[#0F172A] border border-slate-800 text-slate-500 px-3.5 py-2 rounded-lg text-[10px] tracking-wider font-bold">+39 More</button>
+                    <button onclick="filterCity('')" class="city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md">All UAE</button>
+                    <button onclick="filterCity('Dubai')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Dubai</button>
+                    <button onclick="filterCity('Abu Dhabi')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Abu Dhabi</button>
+                    <button onclick="filterCity('Sharjah')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Sharjah</button>
+                    <button onclick="filterCity('Saudi Arabia')" class="city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Saudi Arabia</button>
                 </div>
             </div>
 
@@ -144,44 +142,40 @@
                 <h3 class="font-bold text-sm tracking-wide uppercase mb-4 text-slate-200 border-b border-slate-700/60 pb-2.5 flex items-center gap-1.5"><span>🗂️</span> Explore Jobs By Industry</h3>
                 <div class="flex flex-wrap gap-2 text-xs">
                     <button onclick="filterCategoryKeyword('management')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Top Management</button>
-                    <button onclick="filterCategoryKeyword('account')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Accounts / Financial Services</button>
-                    <button onclick="filterCategoryKeyword('operator')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Data Entry / Civil Engg</button>
-                    <button onclick="filterCategoryKeyword('hr')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">HR / Industrial Relations</button>
-                    <button class="bg-[#0F172A] border border-slate-800 text-slate-500 px-3.5 py-2 rounded-lg text-[10px] tracking-wider font-bold">+97 More</button>
+                    <button onclick="filterCategoryKeyword('account')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Accounts / Finance</button>
+                    <button onclick="filterCategoryKeyword('operator')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">Data Entry / Civil</button>
+                    <button onclick="filterCategoryKeyword('hr')" class="bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer">HR Departments</button>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a href="https://free-cv-builder-123.blogspot.com/" target="_blank" class="block bg-gradient-to-r from-sky-600 to-indigo-700 border border-sky-400 p-4 rounded-xl shadow-lg hover:scale-[1.01] transition duration-200">
-                <div class="flex justify-between items-center h-full">
-                    <div>
-                        <span class="bg-yellow-400 text-slate-900 font-black text-[9px] uppercase px-2 py-0.5 rounded mb-1 inline-block tracking-wider">Free Utility</span>
-                        <h4 class="text-sm font-black text-white tracking-wide">CREATE ATS RESUMES & DOWNLOAD PDF</h4>
-                        <p class="text-sky-100 text-[11px] mt-0.5">100% Free professional layouts tailored for Gulf markets.</p>
-                    </div>
-                    <span class="bg-white/10 text-white text-xs font-bold px-3 py-2 rounded-lg border border-white/20 whitespace-nowrap ml-2">Build CV 📄</span>
-                </div>
-            </a>
-
-            <div class="w-full bg-[#1E293B] border border-dashed border-slate-700 p-4 rounded-xl flex items-center justify-center text-center">
-                <span class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">✨ ADSTERRA / MONETAG DISPLAY AD SLOT ✨</span>
-            </div>
-        </div>
-
+        <!-- ==================== CAREERJET EMBED STREAM CONTEXT ==================== -->
         <div class="space-y-4">
             <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-800 pb-3">
-                <h2 class="text-xl font-black tracking-tight text-white flex items-center gap-2"><span>🔥</span> Daily Auto-Updated Job Streams</h2>
-                <span class="text-xs font-semibold text-slate-400 bg-[#1E293B] px-3 py-1 rounded-full border border-slate-700" id="jobCount">Fetching live databanks...</span>
+                <h2 class="text-xl font-black tracking-tight text-white flex items-center gap-2"><span>🔥</span> Live Verified Job Stream</h2>
+                <span class="text-xs font-semibold text-slate-400 bg-[#1E293B] px-3 py-1 rounded-full border border-slate-700">Auto-Updated Feed</span>
             </div>
-            <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            
+            <!-- Target container for the third party widget script -->
+            <div id="widgetContainer" class="w-full">
+                <div class="cj-job-box" 
+                     data-url="https://widget.careerjet.net/job-box/1e8326aba9f15d46ead9b49bf4d12fb0" 
+                     data-search="" 
+                     data-location="">
+                </div>
+            </div>
+        </div>
+        <!-- ==================== END OF EMBED CONTEXT ==================== -->
+
+        <div class="bg-[#1E293B] border border-dashed border-slate-700 p-4 rounded-xl flex items-center justify-center text-center">
+            <span class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">✨ ADSTERRA / MONETAG DISPLAY AD SLOT ✨</span>
         </div>
 
         <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-800 rounded-2xl p-8 flex flex-col lg:flex-row items-center gap-8 shadow-xl">
             <div class="text-center lg:text-left lg:w-1/3">
                 <div class="text-4xl mb-3 animate-bounce">🚀</div>
                 <h3 class="text-xl font-black tracking-tight text-white">Boost Your Job Hunt Search By 50%</h3>
-                <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Ensure structural talent filters flag your background profile files first when elite multi-national Gulf enterprises select applications.</p>
+                <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">Ensure structural talent filters flag your background profile files first when elite corporate Gulf enterprises select applications.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-2/3">
                 <div class="bg-[#0F172A] border border-slate-700 p-6 rounded-xl flex flex-col justify-between hover:border-sky transition">
@@ -203,41 +197,12 @@
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-sky-950/40 to-slate-900 border border-slate-800 p-8 rounded-2xl text-center max-w-3xl mx-auto space-y-4">
-            <h3 class="text-lg font-bold text-white">Receive Fresh Openings directly inside your Inbox</h3>
-            <p class="text-xs text-slate-400 max-w-md mx-auto">Join thousands of verified Gulf job seekers. Subscribe to our daily verified multi-platform newsletter update loop.</p>
-            <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
-                <input type="email" placeholder="Enter your email address..." class="bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky w-full">
-                <button onclick="alert('Thank you for subscribing to JOBBEZ real-time vacancy logs!')" class="bg-sky text-slate-900 font-bold text-xs px-6 py-2.5 rounded-xl hover:opacity-90 transition whitespace-nowrap cursor-pointer">Subscribe</button>
-            </div>
-        </div>
-
     </main>
 
     <footer class="bg-[#0F172A] border-t border-slate-800 py-12 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-xs text-slate-400">
-            <div class="flex flex-col gap-3">
-                <span onclick="filterCity('all')" class="hover:text-sky cursor-pointer transition">Home Directory</span>
-                <span onclick="alert('Terms and Conditions Agreement Document')" class="hover:text-sky cursor-pointer transition">Terms & Conditions</span>
-                <span onclick="alert('Privacy Protection Policy Document')" class="hover:text-sky cursor-pointer transition">Privacy Policy</span>
-                <span onclick="alert('Security Advice & Anti-Fraud Advisory')" class="hover:text-sky cursor-pointer transition">Security Advice</span>
-            </div>
-            <div class="flex flex-col gap-3">
-                <span onclick="alert('Fraud Prevention System Information')" class="hover:text-sky cursor-pointer transition">Fraud Protection Advisory</span>
-                <span onclick="alert('Report Bug/System Error Form Connection')" class="hover:text-sky cursor-pointer transition">Report System Bug</span>
-                <span onclick="alert('Official Legal Notices/Summons Logs')" class="hover:text-sky cursor-pointer transition">Summons / Notices</span>
-                <span onclick="alert('Corporate Redress Grievances Interface')" class="hover:text-sky cursor-pointer transition">Grievances Board</span>
-            </div>
-            <div class="flex flex-col gap-3">
-                <span onclick="alert('About Our Enterprise Platform Story')" class="hover:text-sky cursor-pointer transition">About Our Platform</span>
-                <span onclick="alert('Corporate Support Contact Form')" class="hover:text-sky cursor-pointer transition">Contact Support Team</span>
-                <span onclick="alert('User Feedback Forum Link')" class="hover:text-sky cursor-pointer transition">User Feedback Forum</span>
-                <span onclick="alert('Frequently Asked Questions Reference Base')" class="hover:text-sky cursor-pointer transition">FAQs Knowledge Center</span>
-            </div>
-            <div class="flex flex-col justify-between items-start">
-                <span class="text-xl font-black tracking-wider text-white">JOB<span class="text-sky">BEZ</span></span>
-                <p class="text-[10px] text-slate-600 leading-relaxed mt-2">&copy; 2026 JOBBEZ Global Media Group.<br>Powered by Careerjet Core API Proxy.<br>All rights reserved.</p>
-            </div>
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+            <span class="text-xl font-black tracking-wider text-white">JOB<span class="text-sky">BEZ</span></span>
+            <p class="text-[10px] text-slate-600 tracking-wide text-center sm:text-right">&copy; 2026 JOBBEZ Global Media Group. Powered natively by Careerjet Widget Systems.</p>
         </div>
     </footer>
 
@@ -257,7 +222,7 @@
                     <label class="block text-slate-400 mb-1">Password Code</label>
                     <input type="password" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
                 </div>
-                <button onclick="alert('System Notice: Demo Authentication Sequence Success!'); closeModal('loginModal')" class="w-full bg-sky text-slate-900 font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Sign In</button>
+                <button onclick="closeModal('loginModal')" class="w-full bg-sky text-slate-900 font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Sign In</button>
             </div>
         </div>
     </div>
@@ -277,135 +242,88 @@
                     <label class="block text-slate-400 mb-1">Email Connection</label>
                     <input type="email" placeholder="example@mail.com" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky">
                 </div>
-                <div>
-                    <label class="block text-slate-400 mb-1">Upload CV / Resume Document (PDF/DOCX)</label>
-                    <input type="file" class="w-full bg-[#0F172A] border border-slate-700 rounded-lg p-2 text-slate-400 file:mr-4 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-bold file:bg-sky file:text-slate-900 cursor-pointer">
-                </div>
-                <button onclick="alert('Account setup sequence registered successfully!'); closeModal('registerModal')" class="w-full bg-[#E63946] text-white font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Register Portfolio</button>
+                <button onclick="alert('Profile Saved!'); closeModal('registerModal')" class="w-full bg-[#E63946] text-white font-bold p-2.5 rounded-lg hover:opacity-90 transition cursor-pointer uppercase tracking-wider text-[11px] mt-2">Register Portfolio</button>
             </div>
         </div>
     </div>
 
+    <!-- Careerjet Widget Initialization Script Core -->
+    <script id="cj-script-loader">
+        (function(d){
+            var js=d.createElement('script');
+            js.id='cj-job-box';
+            js.async=true;
+            js.src='https://static.careerjet.org/js/all_widget_job_box_3rd_party.min.js?t='+Date.now();
+            d.body.appendChild(js);
+        })(document);
+    </script>
+
     <script>
-        let allJobs = [];
-        let currentCityFilter = 'all';
-        let currentKeyword = 'jobs';
+        let currentKeyword = "";
+        let currentCity = "";
 
-        // Direct fetch connecting to your Cloudflare Worker proxy
-        async function fetchLiveNetworkData() {
-            const grid = document.getElementById('jobsGrid');
-            const countText = document.getElementById('jobCount');
+        // Function that targets the Careerjet widget and reloads it dynamically with parameters
+        function updateCareerjetWidget() {
+            const container = document.getElementById('widgetContainer');
             
-            // Set loading text
-            countText.innerText = "Syncing live feeds...";
-            
-            try {
-                // Your live Cloudflare Worker URL link
-                const workerUrl = 'https://misty-surf-2598.salman-shahiddxb.workers.dev';
+            // Clean out old instance completely to avoid visual overlap bugs
+            container.innerHTML = `
+                <div class="cj-job-box" 
+                     data-url="https://widget.careerjet.net/job-box/1e8326aba9f15d46ead9b49bf4d12fb0" 
+                     data-search="${currentKeyword}" 
+                     data-location="${currentCity}">
+                </div>
+            `;
+
+            // Force Careerjet's global library script engine to refresh the layout context
+            if (window.careerjet && typeof window.careerjet.renderWidgets === 'function') {
+                window.careerjet.renderWidgets();
+            } else {
+                // If it hasn't initialized fully yet, remove old script tag and append a clean one
+                const oldScript = document.getElementById('cj-script-loader');
+                if (oldScript) oldScript.remove();
                 
-                // Build dynamic link using selected keyword and location filters
-                const targetUrl = `${workerUrl}?keywords=${encodeURIComponent(currentKeyword)}&location=${encodeURIComponent(currentCityFilter === 'all' ? 'uae' : currentCityFilter)}`;
-                
-                const response = await fetch(targetUrl);
-                const data = await response.json();
-                
-                // Maps Careerjet array results fields natively to client application structure
-                allJobs = data.jobs || [];
-                displayJobs(allJobs);
-            } catch (error) {
-                console.error("Worker Bridge Fetch Error:", error);
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-[#1E293B] border border-slate-800 rounded-xl text-slate-400 font-medium">
-                        <p class="text-sm">🔄 Syncing live multi-platform data loops...</p>
-                        <p class="text-[11px] text-slate-500 mt-1">Please wait 10 seconds or refresh the browser interface window.</p>
-                    </div>`;
-                countText.innerText = "Connection loop retry active";
+                const newScript = document.createElement('script');
+                newScript.id = 'cj-script-loader';
+                newScript.async = true;
+                newScript.src = 'https://static.careerjet.org/js/all_widget_job_box_3rd_party.min.js?t=' + Date.now();
+                document.body.appendChild(newScript);
             }
         }
 
-        // Render function processing data components seamlessly into your styling layout
-        function displayJobs(jobsArray) {
-            const grid = document.getElementById('jobsGrid');
-            const countText = document.getElementById('jobCount');
-            grid.innerHTML = "";
-
-            if(!jobsArray || jobsArray.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-xs">No matching live vacancies discovered. Try expanding search parameters.</div>`;
-                countText.innerText = "Showing 0 live opportunities";
-                return;
-            }
-
-            countText.innerText = `Showing ${jobsArray.length} live opportunities verified today`;
-
-            jobsArray.forEach(job => {
-                const card = document.createElement('div');
-                card.className = "premium-card p-5 rounded-xl flex flex-col justify-between";
-
-                // Formats fields to parse standard values out of structural data elements securely
-                const title = job.title || 'Job Opening';
-                const company = job.company || 'Premium Enterprise';
-                const location = job.locations || 'UAE (Multi-Site)';
-                const jobUrl = job.url || '#';
-
-                card.innerHTML = `
-                    <div class="space-y-1">
-                        <h2 class="font-bold text-sm text-white tracking-wide leading-snug truncate hover:text-sky transition cursor-pointer" title="${title}" onclick="handleJobClick('${jobUrl}')">${title}</h2>
-                        <p class="text-slate-300 text-xs font-medium truncate">🏢 ${company}</p>
-                        <p class="text-slate-400 text-[11px] flex items-center gap-1"><span>📍</span> ${location}</p>
-                    </div>
-                    <div class="flex justify-between items-center mt-5 pt-3.5 border-t border-slate-800">
-                        <span class="text-[9px] bg-slate-900 text-sky px-2 py-0.5 rounded font-black uppercase tracking-wider border border-slate-800">Careerjet Live</span>
-                        <button onclick="handleJobClick('${jobUrl}')" class="bg-sky text-slate-900 text-[11px] font-black uppercase tracking-wider px-3.5 py-2 rounded-lg hover:opacity-90 transition shadow shadow-sky-500/5 cursor-pointer">Apply Now</button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Master double tab opening strategy
-        function handleJobClick(jobUrl) {
-            // 1. Open the Monetag Ad link first
-            window.open('https://omg10.com/4/11046899', '_blank');
-            
-            // 2. Open the actual job destination right after
-            window.open(jobUrl, '_blank');
-        }
-
-        // Triggers fresh API pull when user uses search box
+        // Search inputs connector
         function filterJobs() {
-            const searchVal = document.getElementById('jobSearch').value;
-            currentKeyword = searchVal.trim() !== "" ? searchVal : "jobs";
-            fetchLiveNetworkData();
+            currentKeyword = document.getElementById('jobSearch').value.trim();
+            updateCareerjetWidget();
         }
 
-        // Triggers fresh API pull when user changes city filters
-        function filterCity(city) {
-            currentCityFilter = city;
+        // Location selection click connector
+        function filterCity(cityName) {
+            currentCity = cityName;
+            
+            // Reset active styles on all location selection elements
             const buttons = document.querySelectorAll('.city-btn');
             buttons.forEach(btn => {
                 btn.className = "city-btn bg-[#0F172A] border border-slate-700 text-slate-300 px-3.5 py-2 rounded-lg hover:border-sky transition cursor-pointer";
             });
             
+            // Highlight selected active item element safely
             if(window.event && window.event.target && window.event.target.tagName === 'BUTTON') {
                 window.event.target.className = "city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md";
             }
             
-            fetchLiveNetworkData();
+            updateCareerjetWidget();
         }
 
-        // Triggers fresh API pull when user clicks an industry button
+        // Industry categories tag connector
         function filterCategoryKeyword(keyword) {
             document.getElementById('jobSearch').value = keyword;
             currentKeyword = keyword;
-            fetchLiveNetworkData();
+            updateCareerjetWidget();
         }
 
-        // Modal triggers
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
-        // Start connection on client load sequence
-        window.onload = fetchLiveNetworkData;
     </script>
 </body>
 </html>
