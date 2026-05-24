@@ -90,7 +90,7 @@
                 <p class="text-slate-400 text-xs sm:text-sm mb-6">Find verified executive, administrative, technical, and remote employment opportunities matching your exact background profiles.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-2.5">
-                    <input type="text" id="jobSearch" onkeyup="filterJobs()" placeholder="Search by job titles, designations, companies, keywords..." class="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sky text-sm transition">
+                    <input type="text" id="jobSearch" onkeyup="if(event.key === 'Enter') filterJobs()" placeholder="Search by job titles, designations, companies, keywords..." class="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sky text-sm transition">
                     <button onclick="filterJobs()" class="bg-sky text-slate-900 font-extrabold px-8 py-3.5 rounded-xl hover:opacity-95 transition cursor-pointer text-sm tracking-wide uppercase shadow-md whitespace-nowrap">Search Jobs</button>
                 </div>
             </div>
@@ -289,25 +289,37 @@
     <script>
         let allJobs = [];
         let currentCityFilter = 'all';
+        let currentKeyword = 'jobs';
 
         // Direct fetch connecting to your Cloudflare Worker proxy
         async function fetchLiveNetworkData() {
+            const grid = document.getElementById('jobsGrid');
+            const countText = document.getElementById('jobCount');
+            
+            // Set loading text
+            countText.innerText = "Syncing live feeds...";
+            
             try {
-                // Your live Cloudflare Worker URL link:
+                // Your live Cloudflare Worker URL link
                 const workerUrl = 'https://misty-surf-2598.salman-shahiddxb.workers.dev';
                 
-                const response = await fetch(workerUrl);
+                // Build dynamic link using selected keyword and location filters
+                const targetUrl = `${workerUrl}?keywords=${encodeURIComponent(currentKeyword)}&location=${encodeURIComponent(currentCityFilter === 'all' ? 'uae' : currentCityFilter)}`;
+                
+                const response = await fetch(targetUrl);
                 const data = await response.json();
                 
                 // Maps Careerjet array results fields natively to client application structure
                 allJobs = data.jobs || [];
-                executeCombinedFilter('', 'all');
+                displayJobs(allJobs);
             } catch (error) {
-                document.getElementById('jobsGrid').innerHTML = `
+                console.error("Worker Bridge Fetch Error:", error);
+                grid.innerHTML = `
                     <div class="col-span-full text-center py-12 bg-[#1E293B] border border-slate-800 rounded-xl text-slate-400 font-medium">
                         <p class="text-sm">🔄 Syncing live multi-platform data loops...</p>
                         <p class="text-[11px] text-slate-500 mt-1">Please wait 10 seconds or refresh the browser interface window.</p>
                     </div>`;
+                countText.innerText = "Connection loop retry active";
             }
         }
 
@@ -317,7 +329,7 @@
             const countText = document.getElementById('jobCount');
             grid.innerHTML = "";
 
-            if(jobsArray.length === 0) {
+            if(!jobsArray || jobsArray.length === 0) {
                 grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-xs">No matching live vacancies discovered. Try expanding search parameters.</div>`;
                 countText.innerText = "Showing 0 live opportunities";
                 return;
@@ -359,35 +371,14 @@
             window.open(jobUrl, '_blank');
         }
 
-        // Core filter execution controller
-        function executeCombinedFilter(keyword, city) {
-            let filtered = allJobs;
-
-            if (city !== 'all') {
-                filtered = filtered.filter(j => {
-                    const loc = (j.locations || '').toLowerCase();
-                    if (city === 'saudi') return loc.includes('saudi') || loc.includes('riyadh') || loc.includes('jeddah');
-                    return loc.includes(city);
-                });
-            }
-
-            if (keyword) {
-                const key = keyword.toLowerCase();
-                filtered = filtered.filter(j => 
-                    (j.title || '').toLowerCase().includes(key) || 
-                    (j.company || '').toLowerCase().includes(key) ||
-                    (j.description || '').toLowerCase().includes(key)
-                );
-            }
-
-            displayJobs(filtered);
-        }
-
+        // Triggers fresh API pull when user uses search box
         function filterJobs() {
             const searchVal = document.getElementById('jobSearch').value;
-            executeCombinedFilter(searchVal, currentCityFilter);
+            currentKeyword = searchVal.trim() !== "" ? searchVal : "jobs";
+            fetchLiveNetworkData();
         }
 
+        // Triggers fresh API pull when user changes city filters
         function filterCity(city) {
             currentCityFilter = city;
             const buttons = document.querySelectorAll('.city-btn');
@@ -399,13 +390,14 @@
                 window.event.target.className = "city-btn bg-sky text-slate-900 font-bold px-3.5 py-2 rounded-lg transition cursor-pointer shadow-md";
             }
             
-            const searchVal = document.getElementById('jobSearch').value;
-            executeCombinedFilter(searchVal, currentCityFilter);
+            fetchLiveNetworkData();
         }
 
+        // Triggers fresh API pull when user clicks an industry button
         function filterCategoryKeyword(keyword) {
             document.getElementById('jobSearch').value = keyword;
-            executeCombinedFilter(keyword, currentCityFilter);
+            currentKeyword = keyword;
+            fetchLiveNetworkData();
         }
 
         // Modal triggers
